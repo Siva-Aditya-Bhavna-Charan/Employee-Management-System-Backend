@@ -9,6 +9,10 @@ public class EmsBackendApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EmsBackendApplication.class, args);
 		System.out.println("Hello World!");
+		System.out.println("Git hub is connected ");
+		
+
+		
 	}
 
 }
