@@ -1,5 +1,6 @@
 package com.excelr.ems_backend.models;
 
+import com.excelr.ems_backend.validators.NotNullOrBlank;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Entity;
@@ -7,6 +8,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class FinanceDetails {
@@ -15,11 +19,22 @@ public class FinanceDetails {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@Size(min = 10, max = 10, message = "PAN card number should be 10 characters long.")
 	private String panCard;
+	
+	@Pattern(regexp = "\\d{12}", message = "Aadhar card number should contain only 12 digits.")
 	private String aadharCard;
+	
+	@NotNullOrBlank(message = "bank name is required.")
 	private String bankName;
+	
+	@NotNullOrBlank(message = "bank branch name is required.")
 	private String branch;
+	
+	@NotNullOrBlank(message = "IFSC Code is required.")
 	private String ifscCode;
+	
+	@NotNull(message = "CTC Breakup name is required.")
 	private int ctcBreakup;
 
 	@OneToOne(mappedBy = "financeDetails")

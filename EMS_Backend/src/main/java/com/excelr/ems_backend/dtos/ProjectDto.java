@@ -1,23 +1,9 @@
-package com.excelr.ems_backend.models;
+package com.excelr.ems_backend.dtos;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-
-@Entity
-
-public class ProjectDetails {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-
+public class ProjectDto {
+	
 	private int projectCode;
 
 	private Date startDate;
@@ -31,15 +17,6 @@ public class ProjectDetails {
 	private String reportingManagerEmployeeCode;
 
 	private String reportingManagerEmployeeMail;
-
-	@ManyToOne
-	@JoinColumn(name = "employee_id")
-	@JsonBackReference
-	private EmployeeRecord employee;
-
-	public Long getId() {
-		return id;
-	}
 
 
 	public int getProjectCode() {
@@ -98,27 +75,17 @@ public class ProjectDetails {
 		this.reportingManagerEmployeeMail = reportingManagerEmployeeMail;
 	}
 
-	public EmployeeRecord getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(EmployeeRecord employee) {
-		this.employee = employee;
-	}
-
-
 	@Override
 	public String toString() {
-		return "ProjectDetails [id=" + id + ", projectCode=" + projectCode + ", startDate=" + startDate + ", endDate="
+		return "ProjectDetails [projectCode=" + projectCode + ", startDate=" + startDate + ", endDate="
 				+ endDate + ", clientName=" + clientName + ", projectName=" + projectName
 				+ ", reportingManagerEmployeeCode=" + reportingManagerEmployeeCode + ", reportingManagerEmployeeMail="
-				+ reportingManagerEmployeeMail + ", employee=" + employee + "]";
+				+ reportingManagerEmployeeMail+"]";
 	}
 
 
-	public ProjectDetails() {
+	public ProjectDto() {
 		
 	}
-	
 	
 }

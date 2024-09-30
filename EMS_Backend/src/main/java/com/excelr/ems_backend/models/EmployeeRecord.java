@@ -33,7 +33,7 @@ public class EmployeeRecord {
 	@JsonManagedReference
 	private ProfessionalDetails professionalDetails;
 	
-	@OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.EAGER,orphanRemoval = true)
 	@JsonManagedReference
 	private List<ProjectDetails> projects;
 	

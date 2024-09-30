@@ -47,12 +47,11 @@ public class Admin {
 	}
 
 	public Admin() {
-		super();
 	}
 
 	@Override
 	public String toString() {
-		return "Admin [id=" + id + ", name=" + name + ", EmploymentCode=" + EmploymentCode + ", companyMail="
+		return "Admin [" + "name=" + name + ", EmploymentCode=" + EmploymentCode + ", companyMail="
 				+ companyMail + ", password=" + password + "]";
 	}
 	

@@ -10,8 +10,6 @@ public class EmsBackendApplication {
 		SpringApplication.run(EmsBackendApplication.class, args);
 		System.out.println("Hello World!");
 		
-
-		
 	}
 
 }

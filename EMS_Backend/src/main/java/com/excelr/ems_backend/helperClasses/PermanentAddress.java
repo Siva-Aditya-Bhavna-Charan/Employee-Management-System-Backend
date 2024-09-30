@@ -1,13 +1,27 @@
 package com.excelr.ems_backend.helperClasses;
 
 import jakarta.persistence.Embeddable;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 @Embeddable
 
 public class PermanentAddress {
+	
+	@NotNull(message = "City name should is required")
 	private String perm_city;
+	
+	@NotNull(message = "Permanent Address line1 is required")
 	private String perm_line1;
+	
+	@NotNull(message = "Permanent Address line2 is required")
 	private String perm_line2;
+	
+	@Min(value = 100000, message = "PinCode Must be a six-digit number.")
+    @Max(value = 999999, message = "PinCode Must be a six-digit number.")
+    @Digits(integer = 6, fraction = 0, message = "PinCode Must be a six-digit number.")
 	private int perm_pincode;
 
 	public String getPerm_city() {
