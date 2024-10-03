@@ -2,90 +2,100 @@ package com.excelr.ems_backend.dtos;
 
 import java.util.Date;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+
 public class ProjectDto {
-	
-	private int projectCode;
 
-	private Date startDate;
+    @NotNull(message = "Project code is required.")
+    @Min(value = 1, message = "Project code must be greater than zero.")
+    private int projectCode;
 
-	private Date endDate;
+    @NotNull(message = "Start date is required.")
+    private Date startDate;
 
-	private String clientName;
+    @NotNull(message = "End date is required.")
+    private Date endDate;
 
-	private String projectName;
+    @NotNull(message = "Client name is required.")
+    private String clientName;
 
-	private String reportingManagerEmployeeCode;
+    @NotNull(message = "Project name is required.")
+    private String projectName;
 
-	private String reportingManagerEmployeeMail;
+    @NotNull(message = "Manager employee code is required.")
+    private String reportingManagerEmployeeCode;
 
+    @NotNull(message = "Manager employee mail is required.")
+    private String reportingManagerEmployeeMail;
 
-	public int getProjectCode() {
-		return projectCode;
-	}
+    // Getters and setters
 
-	public void setProjectCode(int projectCode) {
-		this.projectCode = projectCode;
-	}
+    public int getProjectCode() {
+        return projectCode;
+    }
 
-	public Date getStartDate() {
-		return startDate;
-	}
+    public void setProjectCode(int projectCode) {
+        this.projectCode = projectCode;
+    }
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
+    public Date getStartDate() {
+        return startDate;
+    }
 
-	public Date getEndDate() {
-		return endDate;
-	}
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
 
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
+    public Date getEndDate() {
+        return endDate;
+    }
 
-	public String getClientName() {
-		return clientName;
-	}
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
 
-	public void setClientName(String clientName) {
-		this.clientName = clientName;
-	}
+    public String getClientName() {
+        return clientName;
+    }
 
-	public String getProjectName() {
-		return projectName;
-	}
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
 
-	public void setProjectName(String projectName) {
-		this.projectName = projectName;
-	}
+    public String getProjectName() {
+        return projectName;
+    }
 
-	public String getReportingManagerEmployeeCode() {
-		return reportingManagerEmployeeCode;
-	}
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
 
-	public void setReportingManagerEmployeeCode(String reportingManagerEmployeeCode) {
-		this.reportingManagerEmployeeCode = reportingManagerEmployeeCode;
-	}
+    public String getReportingManagerEmployeeCode() {
+        return reportingManagerEmployeeCode;
+    }
 
-	public String getReportingManagerEmployeeMail() {
-		return reportingManagerEmployeeMail;
-	}
+    public void setReportingManagerEmployeeCode(String reportingManagerEmployeeCode) {
+        this.reportingManagerEmployeeCode = reportingManagerEmployeeCode;
+    }
 
-	public void setReportingManagerEmployeeMail(String reportingManagerEmployeeMail) {
-		this.reportingManagerEmployeeMail = reportingManagerEmployeeMail;
-	}
+    public String getReportingManagerEmployeeMail() {
+        return reportingManagerEmployeeMail;
+    }
 
-	@Override
-	public String toString() {
-		return "ProjectDetails [projectCode=" + projectCode + ", startDate=" + startDate + ", endDate="
-				+ endDate + ", clientName=" + clientName + ", projectName=" + projectName
-				+ ", reportingManagerEmployeeCode=" + reportingManagerEmployeeCode + ", reportingManagerEmployeeMail="
-				+ reportingManagerEmployeeMail+"]";
-	}
+    public void setReportingManagerEmployeeMail(String reportingManagerEmployeeMail) {
+        this.reportingManagerEmployeeMail = reportingManagerEmployeeMail;
+    }
 
+    @Override
+    public String toString() {
+        return "ProjectDto [projectCode=" + projectCode + ", startDate=" + startDate + ", endDate=" + endDate
+                + ", clientName=" + clientName + ", projectName=" + projectName
+                + ", reportingManagerEmployeeCode=" + reportingManagerEmployeeCode + ", reportingManagerEmployeeMail="
+                + reportingManagerEmployeeMail + "]";
+    }
 
-	public ProjectDto() {
-		
-	}
-	
+    // Default constructor
+    public ProjectDto() {
+    }
 }

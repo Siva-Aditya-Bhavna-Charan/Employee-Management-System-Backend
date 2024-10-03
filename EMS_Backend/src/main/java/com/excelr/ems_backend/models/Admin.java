@@ -30,8 +30,8 @@ public class Admin {
 	public String getEmploymentCode() {
 		return EmploymentCode;
 	}
-	public void setEmploymentCode(String employmentCode) {
-		EmploymentCode = employmentCode;
+	public void setEmploymentCode(String EmploymentCode) {
+		this.EmploymentCode = EmploymentCode;
 	}
 	public String getCompanyMail() {
 		return companyMail;

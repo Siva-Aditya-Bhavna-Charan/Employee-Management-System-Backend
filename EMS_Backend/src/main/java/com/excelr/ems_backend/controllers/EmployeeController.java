@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.excelr.ems_backend.dtos.EmployeeRecordDTO;
+import com.excelr.ems_backend.dtos.PersonalDetailsDto;
+import com.excelr.ems_backend.dtos.ProfessionalDetailsDto;
 import com.excelr.ems_backend.dtos.ProjectDto;
 import com.excelr.ems_backend.models.EmployeeRecord;
 import com.excelr.ems_backend.service.AdminServiceImplementation;
@@ -43,8 +45,18 @@ public class EmployeeController {
 	}
 	
 	@PutMapping("/projects/{id}")
-	public ResponseEntity<String> updateProject(@PathVariable Long id,@RequestBody List<ProjectDto> projectDto) {
+	public ResponseEntity<String> updateProject(@PathVariable Long id, @Valid @RequestBody List<@Valid ProjectDto> projectDto) {
 		return new ResponseEntity<String>(adminService.updateProjects(id, projectDto),HttpStatus.ACCEPTED);
+	}
+	
+	@PutMapping("/personal/{id}")
+	public ResponseEntity<String> updatePersonalDetails(@PathVariable Long id,@RequestBody PersonalDetailsDto personalDetailsDto){
+		return new ResponseEntity<String>(adminService.updatePersonalDetails(id, personalDetailsDto),HttpStatus.OK);
+	}
+	
+	@PutMapping("/professional/{id}")
+	public ResponseEntity<String> updateProfessionalDetails(@PathVariable Long id,@RequestBody ProfessionalDetailsDto professionalDetailsDto){
+		return new ResponseEntity<String>(adminService.updateProfessionalDetails(id, professionalDetailsDto),HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/{id}")

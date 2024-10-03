@@ -31,8 +31,8 @@ public class AdminDto {
 		return EmploymentCode;
 	}
 
-	public void setEmploymentCode(String employmentCode) {
-		EmploymentCode = employmentCode;
+	public void setEmploymentCode(String EmploymentCode) {
+		this.EmploymentCode = EmploymentCode;
 	}
 
 	public String getCompanyMail() {
