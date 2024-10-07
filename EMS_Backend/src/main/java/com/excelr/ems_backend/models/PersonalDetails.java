@@ -158,9 +158,9 @@ public class PersonalDetails {
 	@Override
 	public String toString() {
 		return "PersonalDetails [id=" + id + ", fullName=" + fullName + ", dob=" + dob + ", Gender=" + Gender + ", age="
-				+ age + ", permanentAddress=" + permanentAddress + ", currentAddress=" + currentAddress + ", mobile="
+				+ age + ", mobile="
 				+ mobile + ", personalMail=" + personalMail + ", emergencyContactName=" + emergencyContactName
-				+ ", emergencyContact=" + emergencyContact + ", employee=" + employee + "]";
+				+ ", emergencyContact=" + emergencyContact + "]";
 	}
 
 	public PersonalDetails() {

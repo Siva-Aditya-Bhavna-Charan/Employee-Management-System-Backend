@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard - Professional Details</title>
+    <link rel="icon" type="image/png" href="/images/logo.png" sizes="32x32">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/empProfessional.css">
+    <script src="https://kit.fontawesome.com/32626ae9d6.js" crossorigin="anonymous"></script>
+
+    <script>
+        let id;
+        // Function to fetch professional details of the employee
+        async function fetchProfessionalDetails() {
+            try {
+                id=localStorage.getItem("employeeId");
+                const response = await fetch(`http://localhost:8080/api/${id}`); // Your backend endpoint
+                const data = await response.json();
+                console.log(data);
+                // Populate the form fields with the fetched data
+                document.querySelector('input[name="Employee Code"]').value = data.professionalDetails.employmentCode;
+                document.querySelector('input[name="Company Mail ID"]').value = data.professionalDetails.companyMail;
+                document.querySelector('input[name="Office Phone Number"]').value = data.professionalDetails.officePhone;
+                document.querySelector('input[name="HR Name"]').value = data.professionalDetails.hrName;
+                document.querySelector('input[name="Reporting Manager Code"]').value = data.professionalDetails.reportManagerEmployeeCode;
+                document.querySelector('input[name="Reporting Manager Email"]').value = data.professionalDetails.reportManagerEmployeeMail;
+                document.querySelector('input[name="Date of Joining"]').value = data.professionalDetails.dateOfJoining.substr(0, 10);
+                document.querySelector('input[name="Current city"]').value = data.professionalDetails.officeAddress.curr_city;
+                document.querySelector('input[name="Office Address Line 1"]').value = data.professionalDetails.officeAddress.curr_line1;
+                document.querySelector('input[name="Office Address Line 2"]').value = data.professionalDetails.officeAddress.curr_line2;
+                document.querySelector('input[name="Pin Code"]').value = data.professionalDetails.officeAddress.curr_pincode;
+
+                document.querySelector(".name").textContent=data.personalDetails.fullName
+                document.querySelector(".mail").textContent=data.personalDetails.personalMail;
+                document.querySelector(".welcome_note").textContent="Hello there, "+data.personalDetails.fullName;
+            } catch (error) {
+                console.error('Error fetching professional details:', error);
+            }
+        }
+
+        // Fetch data when the page loads
+        document.addEventListener('DOMContentLoaded', fetchProfessionalDetails);
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile-section">
+                <img src="/images/profile.png" alt="Profile Picture" class="profile-img">
+                <h2 class="name">Username</h2>
+                <p class="mail"></p><br>
+                <hr width="200px">
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <i class="fa-solid fa-house"></i> &emsp14;
+                        <a href="/employee/dashboard">Personal Details</a>
+                    </li>
+                    <li class="active">
+                        <i class="fa-solid fa-user-tie"></i> &emsp14;
+                        <a href="/employee/professional">Professional Details</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-list-check"></i> &emsp14;
+                        <a href="/employee/projects">Project Details</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-landmark"></i> &emsp14;
+                        <a href="/employee/finance">Finance Details</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <h1 class="welcome_note">Hello there, Username</h1>
+                <div class="header-buttons">
+                    <!-- <button>Employee Name</button> -->
+                    <button><a href="/login">Log Out</a></button>
+                </div>
+            </header>
+
+            <section class="project-details">
+                <h2>Professional</h2>
+                <form>
+                    <div class="form-group">
+                        <label>Employee Code</label>
+                        <input type="text" name="Employee Code">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Company Mail ID</label>
+                        <input type="text" name="Company Mail ID">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Office Phone Number</label>
+                        <input type="text" name="Office Phone Number">
+                    </div>
+
+                    <div class="form-group">
+                        <label>HR Name</label>
+                        <input type="text" name="HR Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Reporting Manager Code</label>
+                        <input type="text" name="Reporting Manager Code">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Reporting Manager Email</label>
+                        <input type="text" name="Reporting Manager Email">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date of Joining</label>
+                        <input type="text" name="Date of Joining">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Current city</label>
+                        <input type="text" name="Current city">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Office Address Line 1</label>
+                        <input type="text" name="Office Address Line 1">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Office Address Line 2</label>
+                        <input type="text" name="Office Address Line 2">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Pin Code</label>
+                        <input type="text" name="Pin Code">
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="icon" type="image/png" href="/images/logo.png" sizes="32x32">
+    <link rel="stylesheet" href="/css/adminCreate.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Admin Dashboard</h1>
+            <div class="header-buttons">
+                <!--<button>Admin Name</button>
+                <button><a href="/front-end/login/login.html">Log Out</a></button>-->
+                <button><a href="/admin/dashboard">Dashboard</a></button>
+            </div>
+        </header>
+        <h2>Add a New Employee</h2>
+        <main>
+            <form class="employee-form" id="employeeForm">
+                <fieldset>
+                    <legend>Personal Details</legend>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="full-name">Full Name</label>
+                            <input type="text" id="full-name" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="permanent-address-line1">Permanent Address Line 1</label>
+                            <input type="text" id="permanent-address-line1" name="perm_line1" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" id="dob" name="dob" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="permanent-address-line2">Permanent Address Line 2</label>
+                            <input type="text" id="permanent-address-line2" name="perm_line2" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <input type="number" id="age" name="age" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="gender">Gender</label>
+                            <input type="text" id="gender" name="gender" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="permanent-address-city">Permanent Address City</label>
+                            <input type="text" id="permanent-address-city" name="perm_city" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="mobile">Mobile Number</label>
+                            <input type="tel" id="mobile" name="mobile" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="permanent-address-pincode">Permanent Address Pincode</label>
+                            <input type="text" id="permanent-address-pincode" name="perm_pincode" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="current-address-line1">Current Address Line 1</label>
+                            <input type="text" id="current-address-line1" name="curr_line1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="current-address-city">Current Address City</label>
+                            <input type="text" id="current-address-city" name="curr_city" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="current-address-line2">Current Address Line 2</label>
+                            <input type="text" id="current-address-line2" name="curr_line2" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="current-address-pincode">Current Address Pincode</label>
+                            <input type="text" id="current-address-pincode" name="curr_pincode" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="personal-mail">Personal Mail ID</label>
+                            <input type="email" id="personal-mail" name="personalMail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emergency-contact-name">Emergency Contact Name</label>
+                            <input type="text" id="emergency-contact-name" name="emergencyContactName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="emergency-contact">Emergency Contact</label>
+                            <input type="tel" id="emergency-contact" name="emergencyContact" required>
+                        </div>
+                        
+                    </div>
+                </fieldset>
+                
+                <br><br>
+                
+                <!--Professional Details-->
+                <fieldset>
+                    <legend>Professional Details</legend>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="employment-code">Employment Code</label>
+                            <input type="number" id="employment-code" name="employmentCode" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company-mail">Company Mail ID</label>
+                            <input type="email" id="company-mail" name="companyMail" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="office-phone">Office Phone Number</label>
+                            <input type="tel" id="office-phone" name="officePhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date-of-joining">Date of Joining</label>
+                            <input type="date" id="date-of-joining" name="dateOfJoining" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="report-manager-email">Report Manager Email</label>
+                            <input type="email" id="report-manager-email" name="reportManagerEmployeeMail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="office_address_line1">Office Address Line 1</label>
+                            <input type="text" id="office_address_line1" name="office_address_line1" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="report-manager-code">Report Manager Code</label>
+                            <input type="text" id="report-manager-code" name="reportManagerEmployeeCode" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="office_address_line2">Office Address Line 2</label>
+                            <input type="text" id="office_address_line2" name="office_address_line2" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="hr-name">HR Name</label>
+                            <input type="text" id="hr-name" name="hrName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="office_address_city">Office Address City</label>
+                            <input type="text" id="office_address_city" name="office_address_city" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="office_address_pincode">Office Address Pincode</label>
+                            <input type="text" id="office_address_pincode" name="office_address_pincode" required>
+                        </div>
+                </fieldset><br><br>
+
+                <!--Project Details-->
+                <fieldset>
+                    <legend>Project Details</legend>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="client_Name">Client Name:</label>
+                            <input type="text" id="client_Name" name="client_Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="project_name">Current Project Name</label>
+                            <input type="text" id="project_name" name="project_name" >
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="project-code">Project Code</label>
+                            <input type="text" id="project-code" name="Project-code" >
+                        </div>
+                        <div class="form-group">
+                            <label for="start-date">Start Date</label>
+                            <input type="date" id="start-date" name="Start-Date" >
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="end-date">End Date</label>
+                            <input type="date" id="end-date" name="End-Date" >
+                        </div>
+                        <div class="form-group">
+                            <label for="project_manager_code">Reporting Manager Code:</label>
+                            <input type="text" id="project_manager_code" name="project_manager_code">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="project_manager_email">Reporting Manager Email</label>
+                            <input type="email" id="project_manager_email" name="project_manager_email" >
+                        </div>
+                    </div>
+                </fieldset><br><br>
+
+                <!--Financial Details-->
+                <fieldset>
+                    <legend>Financial Details</legend>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="pan-card">PAN Card</label>
+                            <input type="text" id="pan-card" name="panCard" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="aadhar-card">Aadhar Card</label>
+                            <input type="text" id="aadhar-card" name="aadharCard" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bank-name">Bank Name</label>
+                            <input type="text" id="bank-name" name="bankName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="branch">Branch</label>
+                            <input type="text" id="branch" name="branch" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="ifsc-code">IFSC Code</label>
+                            <input type="text" id="ifsc-code" name="ifscCode" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ctc-breakup">CTC Breakup</label>
+                            <input type="number" id="ctc-breakup" name="ctcBreakup" required>
+                        </div>
+                    </div>
+                    <div class="form-row"> 
+                        <div class="form-group">
+                            <label for="accountNnumber">Bank Account Number:</label>
+                            <input type="text" id="accountNnumber" name="accountNumber" required>
+                        </div>
+                    </div>
+                </fieldset><br><br>
+
+                <button type="submit">Add Employee</button>
+            </form>
+        </main>
+    </div>
+
+    <script>
+        document.getElementById('employeeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            const personalDetails = {
+                fullName: formData.get('fullName'),
+                dob: formData.get('dob'),
+                gender: formData.get('gender'),
+                age: parseInt(formData.get('age')),
+                permanentAddress: {
+                    perm_city: formData.get('perm_city'),
+                    perm_line1: formData.get('perm_line1'),
+                    perm_line2: formData.get('perm_line2'),
+                    perm_pincode: parseInt(formData.get('perm_pincode'))
+                },
+                currentAddress: {
+                    curr_city: formData.get('curr_city'),
+                    curr_line1: formData.get('curr_line1'),
+                    curr_line2: formData.get('curr_line2'),
+                    curr_pincode: parseInt(formData.get('curr_pincode'))
+                },
+                mobile: formData.get('mobile'),
+                personalMail: formData.get('personalMail'),
+                emergencyContactName: formData.get('emergencyContactName'),
+                emergencyContact: formData.get('emergencyContact')
+            };
+
+            const professionalDetails = {
+                employmentCode: formData.get('employmentCode'),
+                companyMail: formData.get('companyMail'),
+                officePhone: formData.get('officePhone'),
+                officeAddress: {
+                    curr_city: formData.get('curr_city'),
+                    curr_line1: formData.get('curr_line1'),
+                    curr_line2: formData.get('curr_line2'),
+                    curr_pincode:parseInt( formData.get('curr_pincode'))
+                },
+                reportManagerEmployeeCode: formData.get('reportManagerEmployeeCode'),
+                reportManagerEmployeeMail: formData.get('reportManagerEmployeeMail'),
+                dateOfJoining: formData.get('dateOfJoining'),
+                hrName: formData.get('hrName'),
+                employmentHistory: [] // You can add logic to capture employment history if needed
+            };
+
+            
+
+            const financeDetails = {
+                panCard: formData.get('panCard'),
+                aadharCard: formData.get('aadharCard'),
+                bankName: formData.get('bankName'),
+                branch: formData.get('branch'),
+                ifscCode: formData.get('ifscCode'),
+                accountNumber: formData.get('accountNumber'),
+                ctcBreakup: parseInt(formData.get('ctcBreakup'))
+            };
+
+            const projects={
+                projectName: formData.get('projectName'),
+                projectCode: formData.get('projectCode'),
+                startDate: formData.get('startDate'),
+                endDate: formData.get('endDate'),
+                reportingManagerEmployeeCode : formData.get('reportingManagerEmployeeCode'),
+                reportingManagerEmployeeMail: formData.get('reportingManagerEmployeeMail'),
+                clientName: formData.get('clientName')
+            };
+
+            const employeeData = {
+                employmentCode: formData.get('employmentCode'),
+                companyMail: formData.get('companyMail'),
+                password: "securepassword", // You can change this based on your requirements
+                role: "Admin", // You can change this based on your requirements
+                personalDetails: personalDetails,
+                professionalDetails: professionalDetails,
+                financeDetails: financeDetails,
+                projects: [projects]// You can add project details here if needed
+            };
+            
+            console.log(employeeData);
+
+            fetch('http://localhost:8080/api/employee/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(employeeData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    Toastify({
+                        text: "Data inserted successfully!",
+                        duration: 3000,
+                        close: true,
+                        gravity: "top",
+                        position: "center",
+                        style: { background: "#4CAF50" },
+                    }).showToast();
+                    this.reset(); // Reset the form after successful submission
+                } else {
+                    Toastify({
+                        text: "Data not inserted!",
+                        duration: 3000,
+                        close: true,
+                        gravity: "top",
+                        position: "center",
+                        style: { background: "#FF0000" },
+                    }).showToast();
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Toastify({
+                        text: "Somethimg went wrong.Try again!",
+                        duration: 3000,
+                        close: true,
+                        gravity: "top",
+                        position: "center",
+                        style: { background: "#4CAF50" },
+                    }).showToast();
+            });
+        });
+    </script>
+</body>
+</html>

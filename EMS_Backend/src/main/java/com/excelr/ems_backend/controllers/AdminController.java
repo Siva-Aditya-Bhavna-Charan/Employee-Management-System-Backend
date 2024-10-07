@@ -19,22 +19,18 @@ import com.excelr.ems_backend.service.AdminServiceImplementation;
 
 
 @RestController
-@RequestMapping("/api/admin")
+@RequestMapping("/api")
 public class AdminController {
 	@Autowired
 	private AdminServiceImplementation adminService;
 	
-	@GetMapping("/test")
-	public String testAdmin() {
-		return "Admin controller is working";
-	}
 	
 	@PostMapping("/NewAdmin")
 	public ResponseEntity<Admin> addNewAdmin(@RequestBody AdminDto adminDto){
 		return new ResponseEntity<>(adminService.createAdmin(adminDto),HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/list")
+	@GetMapping("/admin-list")
 	public ResponseEntity<List<Admin>> getAllAdmins(){
 		return new ResponseEntity<List<Admin>>(adminService.getAllAdmins(),HttpStatus.OK);
 	}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard - Finance Details</title>
+    <link rel="icon" type="image/png" href="/images/logo.png" sizes="32x32">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/empFinance.css">
+    <script src="https://kit.fontawesome.com/32626ae9d6.js" crossorigin="anonymous"></script>
+
+    <script>
+        let id;
+        // Function to fetch financial details of the employee
+        async function fetchFinancialDetails() {
+            try {
+                id=localStorage.getItem("employeeId");
+                const response = await fetch(`http://localhost:8080/api/${id}`, { "no-cors": true }); // Replace with your backend API endpoint
+                const data = await response.json();
+                console.log(data);
+
+                // Populate form fields with fetched data
+                document.querySelector('input[name="pan-card"]').value = data.financeDetails.panCard;
+                document.querySelector('input[name="aadhar-card"]').value = data.financeDetails.aadharCard;
+                document.querySelector('input[name="bank-name"]').value = data.financeDetails.bankName;
+                document.querySelector('input[name="branch"]').value = data.financeDetails.branch;
+                document.querySelector('input[name="ifsc-code"]').value = data.financeDetails.ifscCode;
+                document.querySelector('input[name="account-number"]').value = data.financeDetails.accountNumber;
+                document.querySelector('textarea[name="ctc-breakup"]').value = data.financeDetails.ctcBreakup;
+
+                document.querySelector(".name").textContent=data.personalDetails.fullName
+                document.querySelector(".mail").textContent=data.personalDetails.personalMail;
+                document.querySelector(".welcome_note").textContent="Hello there, "+data.personalDetails.fullName;
+            } catch (error) {
+                console.error('Error fetching financial details:', error);
+            }
+        }
+
+        // Fetch data when the page loads
+        document.addEventListener('DOMContentLoaded', fetchFinancialDetails);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile-section">
+                <img src="/images/profile.png" alt="Profile Picture" class="profile-img">
+                <h2 class="name">Username</h2>
+                <p class="mail"></p><br>
+                <hr width="200px">
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <i class="fa-solid fa-house"></i> &emsp14;
+                        <a href="/employee/dashboard">Personal Details</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-user-tie"></i> &emsp14;
+                        <a href="/employee/professional">Professional Details</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-list-check"></i> &emsp14;
+                        <a href="/employee/projects">Project Details</a>
+                    </li>
+                    <li class="active">
+                        <i class="fa-solid fa-landmark"></i> &emsp14;
+                        <a href="/employee/finance">Finance Details</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <h1 class="welcome_note">Hello there, Username</h1>
+                <div class="header-buttons">
+                    <!-- <button>Employee Name</button> -->
+                    <button><a href="/login">Log Out</a></button>
+                </div>
+            </header>
+
+            <section class="finance-details">
+                <h2>Finance Details</h2><br>
+                <form>
+                    <div class="form-group">
+                        <label>Pan card</label>
+                        <input type="text" name="pan-card">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Aadhar card</label>
+                        <input type="text" name="aadhar-card">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bank Name</label>
+                        <input type="text" name="bank-name">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Branch</label>
+                        <input type="text" name="branch">
+                    </div>
+
+                    <div class="form-group">
+                        <label>IFSC Code</label>
+                        <input type="text" name="ifsc-code">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Account Number</label>
+                        <input type="text" name="account-number">
+                    </div>
+
+                    <div class="form-group">
+                        <label>CTC breakup</label>
+                        <textarea name="ctc-breakup"></textarea>
+                    </div>
+
+                    <div class="download-payslip-group">
+                        <a href="https://drive.google.com/uc?export=download&id=1d5oejrjIuBJGepfEr8gdnB_PHhkH1th1" class="download-btn" download="Employee_Paysips.pdf">Download</a>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

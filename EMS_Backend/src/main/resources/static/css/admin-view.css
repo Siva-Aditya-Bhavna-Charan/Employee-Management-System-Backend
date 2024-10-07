@@ -1,0 +1,241 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body, html {
+    height: 100%;
+    background-image: url("/images/imagebackground.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    margin: 0;
+    color: white;
+}
+.row{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.row div{
+    width: 100%;
+}
+.row div input{
+    flex-grow: 1;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.dashboard-container {
+    padding: 20px;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+h1 {
+    font-size: 24px;
+    margin-left: 60px;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    margin-right: 70px;
+    min-width: fit-content;
+    white-space: nowrap;
+}
+
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    gap: 10px;
+    margin-right: auto;
+    margin-left: 60px;
+}
+
+.navbar li {
+    display: inline;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #19376D;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: #3457b2;
+}
+
+input[type="text"], 
+input[type="email"], 
+input[type="tel"], 
+input[type="date"], 
+input[type="number"], 
+select {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid white; 
+    background-color: transparent; 
+    width: 100%; 
+    font-size: small;
+    color: white; 
+}
+#gender {
+    color: white;
+    transform: translateX(-3px);
+}
+
+/* Optional: To improve visibility of placeholder text */
+input::placeholder,
+select {
+    color: rgba(255, 255, 255, 0.7); /* Lighter placeholder color */
+}
+.dashboard-container .search {
+    padding: 10px;
+    margin-left: 20px;
+    border-radius: 5px;
+    border: none;
+    width: 40%; 
+    font-size: small;
+    background-color: white;
+    color: black;
+}
+.dashboard-container input::placeholder,
+select {
+    color: rgba(10, 9, 9, 0.7); /* Lighter placeholder color */
+    transform: translateX(20px);
+}
+
+.container {
+    width: 90%;
+    margin: 40px auto;
+    background-color: #252441;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allow wrapping to new lines */
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0 ;
+    border-radius: 8px;
+    width: 48%;
+}
+
+legend {
+    font-weight: bold;
+    font-size: x-large;
+    color: #C6BFEE;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+i {
+    color: black;
+    transform: translateX(65px);
+    color: rgba(10, 9, 9, 0.7);
+    font-size: 14px;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 1200px) {
+    .flex-container {
+        flex-direction: row; /* Keep cards side by side */
+    }
+
+    fieldset {
+        width: 48%; /* Maintain two cards side by side */
+    }
+}
+
+@media (max-width: 768px) {
+    .flex-container {
+        flex-direction: column; /* Stack cards vertically */
+    }
+
+    fieldset {
+        width: 100%; /* Full width for smaller screens */
+    }
+
+    .dashboard-container .search {
+        width: 80%; /* Adjust search bar width */
+    }
+
+    header {
+        flex-direction: column; /* Stack header elements vertically */
+        align-items: flex-start; /* Align header items to the left */
+    }
+
+    h1 {
+        margin-left: 0; /* Remove left margin */
+    }
+
+    .navbar {
+        margin-right: 0; /* Remove margin on the navbar */
+        margin-left: 0; /* Remove margin on the navbar */
+    }
+}
+
+/* Media Query for very small screens (like mobile devices) */
+@media (max-width: 300px) {
+    header {
+        flex-direction: column; /* Stack header elements vertically */
+        align-items: flex-start; /* Align header items to the left */
+    }
+
+    .navbar {
+        flex-direction: column; /* Stack navbar items vertically */
+        align-items: flex-start; /* Align navbar items to the left */
+    }
+
+    .navbar ul {
+        flex-direction: column; /* Change list direction */
+        margin-left: 0; /* Remove left margin */
+    }
+
+    h1 {
+        font-size: 18px; /* Adjust header size */
+        margin-left: 0; /* Remove left margin */
+    }
+
+    .dashboard-container .search {
+        width: 90%; /* Adjust search bar width */
+    }
+
+    .flex-container {
+        flex-direction: column; /* Stack cards vertically */
+    }
+
+    fieldset {
+        width: 100%; /* Full width for smaller screens */
+    }
+}

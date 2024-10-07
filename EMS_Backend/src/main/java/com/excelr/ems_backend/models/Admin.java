@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Admin {
@@ -12,11 +13,33 @@ public class Admin {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotNull(message = "name is required.")
 	private String name;
-	private String EmploymentCode;
+	
+	@NotNull(message = "employment code is required.")
+	private String employmentCode;
+	
+	@NotNull(message = "mail is required.")
 	private String companyMail;
+	
+	@NotNull(message = "password is required.")
 	private String password;
 	
+	@NotNull(message = "role is required.")
+	private String role;
+	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -28,10 +51,10 @@ public class Admin {
 		this.name = name;
 	}
 	public String getEmploymentCode() {
-		return EmploymentCode;
+		return employmentCode;
 	}
-	public void setEmploymentCode(String EmploymentCode) {
-		this.EmploymentCode = EmploymentCode;
+	public void setEmploymentCode(String employmentCode) {
+		this.employmentCode = employmentCode;
 	}
 	public String getCompanyMail() {
 		return companyMail;
@@ -51,8 +74,8 @@ public class Admin {
 
 	@Override
 	public String toString() {
-		return "Admin [" + "name=" + name + ", EmploymentCode=" + EmploymentCode + ", companyMail="
-				+ companyMail + ", password=" + password + "]";
+		return "Admin [id=" + id + ", name=" + name + ", EmploymentCode=" + employmentCode + ", companyMail="
+				+ companyMail + ", password=" + password + ", role=" + role + "]";
 	}
 	
 	

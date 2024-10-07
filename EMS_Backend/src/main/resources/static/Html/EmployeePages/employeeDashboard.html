@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard - Personal Details</title>
+    <link rel="icon" type="image/png" href="/images/logo.png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/empPersonal.css">
+    <script src="https://kit.fontawesome.com/32626ae9d6.js" crossorigin="anonymous"></script>
+    <script>
+        let id;
+        // Function to fetch personal details of the employee
+        
+        async function fetchLoginInfo(){
+        	try{
+        		const response=await fetch("http://localhost:8080/details");
+        		const data = await response.json();
+        		console.log("login: "+data);
+        		id=data.id;
+        		localStorage.setItem("employeeId",id);
+        		fetchPersonalDetails();
+        	}
+        	catch(error){
+        		console.error('Error fetching login details:', error);
+        	}
+        }
+        
+        async function fetchPersonalDetails() {
+            try {
+                const response = await fetch(`http://localhost:8080/api/${id}`);
+                const data = await response.json();
+                console.log(data);
+                // Populate the form fields with the fetched data
+                document.querySelector('input[name="Name"]').value = data.personalDetails.fullName;
+                document.querySelector('input[name="Date of birth"]').value = data.personalDetails.dob.substr(0,10);
+                document.querySelector('input[name="Age"]').value = data.personalDetails.age;
+                document.querySelector('input[name="Gender"]').value = data.personalDetails.gender;
+                document.querySelector('input[name="Current address"]').value = data.personalDetails.currentAddress.curr_city;
+                document.querySelector('input[name="Current address Line-1"]').value = data.personalDetails.currentAddress.curr_line1;
+                document.querySelector('input[name="Current address Line-2"]').value = data.personalDetails.currentAddress.curr_line2;
+                document.querySelector('input[name="Current Pin Code"]').value = data.personalDetails.currentAddress.curr_pincode;
+                document.querySelector('input[name="Permanent address"]').value = data.personalDetails.permanentAddress.perm_city;
+                document.querySelector('input[name="Permanent address Line-1"]').value = data.personalDetails.permanentAddress.perm_city;
+                document.querySelector('input[name="Permanent address Line-2"]').value = data.personalDetails.permanentAddress.perm_line1;
+                document.querySelector('input[name="Permanent address Pincode"]').value = data.personalDetails.permanentAddress.perm_pincode;
+                document.querySelector('input[name="Mobile Number"]').value = data.personalDetails.mobile;
+                document.querySelector('input[name="Emergency Contact"]').value = data.personalDetails.emergencyContact;
+                document.querySelector('input[name="Emergency Contact Name"]').value = data.personalDetails.emergencyContactName;
+                document.querySelector('input[name="Employee code"]').value = data.employmentCode;
+                document.querySelector('input[name="Company Mail ID"]').value = data.companyMail;
+
+                document.querySelector(".name").textContent=data.personalDetails.fullName
+                document.querySelector(".mail").textContent=data.personalDetails.personalMail;
+                document.querySelector(".welcome_note").textContent="Hello there, "+data.personalDetails.fullName;
+            } catch (error) {
+                console.error('Error fetching personal details:', error);
+            }
+        }
+
+        // Fetch data when the page loads
+        document.addEventListener('DOMContentLoaded', fetchLoginInfo);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile-section">
+                <img src="/images/profile.png" alt="Profile Picture" class="profile-img">
+                <h2 class="name">Username</h2>
+                <p class="mail"></p><br>
+                <hr width="200px"> 
+            </div>
+            <nav>
+                <ul>
+                    <li class="active">
+                        <i class="fa-solid fa-house"></i> &emsp14;
+                        <a href="/employee/dashboard">Personal Details</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-user-tie"></i> &emsp14;
+                        <a href="/employee/professional">Professional Details</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-list-check"></i> &emsp14;
+                        <a href="/employee/projects">Project Details</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-landmark"></i> &emsp14;
+                        <a href="/employee/finance">Finance Details</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <h1 class="welcome_note">Hello there, Username</h1>
+                <div class="header-buttons">
+                    <!-- <button>Employee Name</button> -->
+                    <button><a href="/login">Log Out</a></button>
+                </div>
+            </header>
+
+            <section class="project-details">
+                <h2>Personal Details</h2>
+                <form>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" name="Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Date of birth</label>
+                        <input type="text" name="Date of birth">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="text" name="Age">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <input type="text" name="Gender">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Current address</label>
+                        <input type="text" name="Current address">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Current address Line-1</label>
+                        <input type="text" name="Current address Line-1">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Current address Line-2</label>
+                        <input type="text" name="Current address Line-2">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Current Pin Code</label>
+                        <input type="text" name="Current Pin Code">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Permanent address</label>
+                        <input type="text" name="Permanent address">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Permanent address Line-1</label>
+                        <input type="text" name="Permanent address Line-1">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Permanent address Line-2</label>
+                        <input type="text" name="Permanent address Line-2">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Permanent address Pincode</label>
+                        <input type="text" name="Permanent address Pincode">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Mobile Number</label>
+                        <input type="text" name="Mobile Number">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Emergency Contact</label>
+                        <input type="text" name="Emergency Contact">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Emergency Contact Name</label>
+                        <input type="text" name="Emergency Contact Name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Employee code</label>
+                        <input type="text" name="Employee code">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Company Mail ID</label>
+                        <input type="text" name="Company Mail ID">
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

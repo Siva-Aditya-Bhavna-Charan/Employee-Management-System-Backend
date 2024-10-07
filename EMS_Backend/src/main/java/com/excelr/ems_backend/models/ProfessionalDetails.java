@@ -152,10 +152,10 @@ public class ProfessionalDetails {
 	@Override
 	public String toString() {
 		return "ProfessionalDetails [id=" + id + ", employmentCode=" + employmentCode + ", companyMail=" + companyMail
-				+ ", officePhone=" + officePhone + ", officeAddress=" + officeAddress + ", reportManagerEmployeeCode="
+				+ ", officePhone=" + officePhone + ", reportManagerEmployeeCode="
 				+ reportManagerEmployeeCode + ", reportManagerEmployeeMail=" + reportManagerEmployeeMail
-				+ ", employmentHistory=" + employmentHistory + ", dateOfJoining=" + dateOfJoining + ", hrName=" + hrName
-				+ ", employee=" + employee + "]";
+				+ ", dateOfJoining=" + dateOfJoining + ", hrName=" + hrName
+				+ "]";
 	}
 
 }

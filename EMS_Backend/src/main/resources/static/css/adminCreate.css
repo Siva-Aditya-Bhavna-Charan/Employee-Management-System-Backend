@@ -1,0 +1,198 @@
+@charset "UTF-8";
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    background-image: url('/images/imagebackground.png'); /* Replace with your image path */
+    background-size: cover; /* Ensure the image covers the entire viewport */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-attachment: fixed; /* Make sure the image stays fixed when scrolling */
+    background-position: center; /* Center the background image */
+}
+
+.container {
+    width: 95%;
+    margin: 0 auto;
+    padding: 0 20px; /* Add padding to the container */
+}
+
+header {
+    width: 100%; /* Use full width */
+    max-width: 1600px; /* Increase max-width to allow more content width */
+    margin: 0 auto; /* Center the header */
+    display: flex;
+    flex-wrap: wrap; /* Allow header items to wrap on smaller screens */
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0; /* Remove default margin */
+    padding-left: 0; /* Remove any left padding */
+}
+
+header input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    width: 100%; /* Make it responsive */
+    max-width: 400px; /* Set a max-width */
+    margin: 10px 0; /* Add margin for spacing */
+    border: 1px solid white;
+}
+
+.header-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap */
+}
+
+.header-buttons a {
+    text-decoration: none;
+    color: white;
+}
+
+.header-buttons button {
+    background-color: #19376D;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+h2 {
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+main {
+    background-color: #252441; 
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    max-width: 1600px; /* Increase max-width to match the header */
+    width: 95%; /* Increase width of the main section */
+    margin: 0 auto; /* Center the main section */
+}
+
+.employee-form fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.employee-form legend {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #C6BFEE;
+    font-weight: bold;
+}
+
+.employee-form .form-row {
+    display: flex;
+    flex-wrap: wrap; /* Allow form rows to wrap */
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.employee-form .form-group {
+    width: 48%; /* Set all input groups to the same width */
+    margin-right: 10px; /* Add margin to create space between form groups */
+}
+
+.employee-form .form-group:last-child {
+    margin-right: 0; /* Remove margin for the last form group */
+}
+
+.employee-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.employee-form input[type="text"],
+.employee-form input[type="date"],
+.employee-form input[type="number"],
+.employee-form input[type="tel"],
+.employee-form input[type="email"],
+.employee-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid white;
+    background-color: transparent;
+    color: #fff;
+    box-sizing: border-box; /* Ensure padding doesn't exceed the container */
+}
+
+.employee-form button[type="submit"] {
+    background-color: #19376D;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+}
+
+.employee-form button[type="submit"]:hover {
+    background-color: #4b4bdc; 
+    color: #000000;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header-buttons button:hover {
+    background-color: #4b4bdc; 
+    color: #000000;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Align emergency fields consistently */
+.employee-form .emergency-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.employee-form .emergency-row .form-group {
+    width: 30%; /* Adjust width to fit all three fields */
+    margin-right: 10px;
+}
+
+.employee-form .emergency-row .form-group:last-child {
+    margin-right: 0; /* No margin for last item */
+}
+textarea{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid white;
+    background-color: transparent;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Stack header elements vertically */
+        align-items: flex-start; /* Align items to the start */
+    }
+    header input[type="text"] {
+        max-width: 100%; /* Full width on smaller screens */
+    }
+    .employee-form .form-group {
+        width: 100%; /* Full width on smaller screens */
+        margin-right: 0; /* Remove right margin */
+    }
+    .employee-form .emergency-row .form-group {
+        width: 100%; /* Full width for emergency row fields */
+        margin-right: 0;
+    }
+}

@@ -112,7 +112,7 @@ public class ProjectDetails {
 		return "ProjectDetails [id=" + id + ", projectCode=" + projectCode + ", startDate=" + startDate + ", endDate="
 				+ endDate + ", clientName=" + clientName + ", projectName=" + projectName
 				+ ", reportingManagerEmployeeCode=" + reportingManagerEmployeeCode + ", reportingManagerEmployeeMail="
-				+ reportingManagerEmployeeMail + ", employee=" + employee + "]";
+				+ reportingManagerEmployeeMail + "]";
 	}
 
 

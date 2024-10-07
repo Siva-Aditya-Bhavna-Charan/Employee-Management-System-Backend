@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+    <link rel="icon" type="image/png" href="/images/logo.png" sizes="32x32">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/empProjects.css">
+    <script src="https://kit.fontawesome.com/32626ae9d6.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile-section">
+                <img src="/images/profile.png" alt="Profile Picture" class="profile-img">
+                <h2 class="name">Username</h2>
+                <p class="mail" style="margin-top: .3rem;"></p>
+                <hr class="divider" style="margin-top: 1.5rem;width: 14rem;">
+            </div>
+            <nav>
+                <ul>
+                    <li>
+                        <i class="fa-solid fa-house"></i> &emsp14;
+                        <a href="/employee/dashboard">Personal Details</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-user-tie"></i> &emsp14;
+                        <a href="/employee/professional">Professional Details</a>
+                    </li>
+                    <li class="active">
+                        <i class="fa-solid fa-list-check"></i> &emsp14;
+                        <a href="/employee/projects">Project Details</a>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-landmark"></i> &emsp14;
+                        <a href="/employee/finance">Finance Details</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <h1 class="welcome_note">Hello there, Username</h1>
+                <div class="header-buttons">
+                    <button><a href="/login">Log Out</a></button>
+                </div>
+            </header>
+
+            <section class="project-details">
+                <h2>Project Details </h2>
+                <hr class="divider">
+                <div id="projectsContainer"></div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        let projects = [];
+        let id ;
+        let userName = "";
+        let mail = "";
+        
+
+        function displayProjects(projects) {
+            const projectsContainer = document.getElementById('projectsContainer');
+            projectsContainer.innerHTML = '';
+
+            projects.forEach((project, index) => {
+                const projectForm = `
+                <h3 style="font-size:1.5rem;color:#66A3FF; text-decoration:underline; margin-block:1rem;">#Project ${index + 1} </h3>
+            <form>
+                
+                <div class="form-group">
+                    <label>Current Project Name</label>
+                    <input type="text" name="current-project" value="${project.projectName}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>Project code</label>
+                    <input type="text" name="project-code" value="${project.projectCode}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>Start Date</label>
+                    <input type="text" name="start-date" value="${new Date(project.startDate).toLocaleDateString()}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>End Date</label>
+                    <input type="text" name="end-date" value="${new Date(project.endDate).toLocaleDateString()}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>Client Name</label>
+                    <input type="text" name="client-name" value="${project.clientName}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>Reporting Manager Code</label>
+                    <input type="text" name="manager-code" value="${project.reportingManagerEmployeeCode}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>Reporting Manager Email</label>
+                    <input type="email" name="manager-email" value="${project.reportingManagerEmployeeMail}" readonly>
+                </div>
+            </form>
+            `;
+                
+                document.querySelector(".mail").textContent = mail ? mail : "";
+                document.querySelector(".name").textContent = userName ? userName : "userName";
+                document.querySelector(".welcome_note").textContent = "Hello there, " + userName;
+                projectsContainer.innerHTML += projectForm.length > 0 ? projectForm : '<h2>No projects allocated</h2>';
+            });
+        }
+
+        function fetchData(id) {
+            id=localStorage.getItem("employeeId");
+            fetch(`http://localhost:8080/api/${id}`)
+                .then(response => {
+                    if (!response.ok) {
+                        console.log(response);
+
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    userName = data.personalDetails.fullName;
+                    mail = data.personalDetails.personalMail;
+                    projects = [...data.projects];
+                    displayProjects(projects);
+                })
+                .catch(error => console.error('Error fetching employee data:', error));
+        }
+
+        window.onload = fetchData(id);
+    </script>
+</body>
+
+</html>

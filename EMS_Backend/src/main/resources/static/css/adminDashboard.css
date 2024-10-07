@@ -1,0 +1,368 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    background-image: url("/images/imagebackground.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    margin: 0%;
+    color: white;
+}
+
+.dashboard-container {
+    padding: 20px;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    margin-bottom: 3rem;
+    margin-inline: auto;
+    padding-top: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-left: 60px;
+}
+
+input[type="text"] {
+    padding: 0.4rem 0.5rem;
+    border-radius: 5px;
+    border: none;
+    width: 400px;
+    font-size: small;
+    margin-left: 20px; /* Adjusted margin for smaller screens */
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    margin-left: auto;
+}
+
+.header-buttons a{
+    text-decoration: none;
+    color: white;
+}
+
+button {
+    background-color: #19376D;
+    padding: 0.4rem 0.5rem;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3457b2;
+}
+
+.employee-details {
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    margin-left: 60px;
+}
+
+table {
+    width: 93%;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    background-color: #252441;
+    padding: 30px;
+    border: 1px solid #252441;
+    border-radius: 20px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+}
+
+th {
+    background-color: #131324;
+    border-top: none;
+}
+
+td {
+    background-color: #32315A;
+    padding: 1rem;
+}
+
+th:nth-child(2), td:nth-child(2) {
+    width: 230px;
+}
+
+th:nth-child(3), td:nth-child(3) {
+    width: 230px;
+}
+
+th:nth-child(4), td:nth-child(4) {
+    width: 200px;
+}
+
+td button {
+    margin-right: 5px;
+}
+
+.view-btn, .update-btn, .delete-btn {
+    background-color: #19376D;
+}
+
+.view-btn:hover, .update-btn:hover, .delete-btn:hover {
+    background-color: #3457b2;
+}
+
+.view-link, .update-link {
+    text-decoration: none;
+    color: white;
+}
+
+.logout-btn {
+    margin-right: 70px;
+}
+
+table, th, td {
+    border: 1px solid rgb(67, 65, 65);
+}
+
+/* Dashboard Cards Section */
+.dashboard-cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Ensures cards wrap on smaller screens */
+    margin: 20px 0;
+    gap: 20px; /* Adds gap between the cards */
+    width: 93%;
+    margin-inline: auto;
+    margin-bottom: 2rem;
+}
+
+/* Individual Card Styling */
+.card {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    padding: 20px;
+    width: calc(24% - 20px); /* Adjusted for spacing */
+    height: 180px; /* Adjusted height */
+    text-align: left;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative; /* To position the circle inside the card */
+}
+
+/* Card Icon */
+.card-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+}
+
+h3 {
+    font-size: 36px;
+    margin: 0;
+}
+
+p {
+    font-size: 16px;
+    margin: 5px 0;
+    font-weight: 600;
+    color: #C6BFEE;
+}
+
+.card span {
+    font-size: 14px;
+    color: #c5c5c5;
+}
+
+/* Specific adjustments for each card */
+.card:nth-child(1) h3 {
+    color: #FF97C1;
+}
+
+.card:nth-child(2) h3 {
+    color: #F9C941;
+}
+
+.card:nth-child(3) h3 {
+    color: #57C7F8;
+}
+
+/* Circular Progress Bar for the last card */
+.circle-progress {
+    position: absolute;
+    bottom: 50px; /* Adjust to fit within the card */
+    right: 30px; /* Adjust for alignment */
+    width: 80px;
+    height: 80px;
+}
+
+.circle-progress svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.circle-progress circle {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke-width: 10;
+    stroke: rgb(255, 255, 255);
+    cx: 40;
+    cy: 40;
+    r: 35;
+    stroke-dasharray: 220;
+    stroke-linecap: round;
+}
+
+.circle-progress circle:nth-child(2) {
+    stroke: #802FF3;
+    stroke-dashoffset: 300;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.percentage {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+    .card {
+        width: calc(48% - 20px); /* Adjust to two cards per row */
+    }
+}
+
+@media (max-width: 767px) {
+    header {
+        flex-direction: column; /* Stack header elements vertically */
+        align-items: flex-start;
+        margin-left: 10px; /* Adjust margin */
+    }
+    .header-buttons{
+        align-items: flex-end;
+    }
+
+    input[type="text"] {
+        width: 100%; /* Full width for smaller screens */
+        margin-left: 0; /* Reset margin */
+        margin-top: 10px; /* Add margin top */
+    }
+
+    .dashboard-cards {
+        flex-direction: column; /* Cards stacked vertically */
+        margin: 20px 10px;
+        gap: 20px; /* Add space between cards */
+    }
+
+    .card {
+        width: 100%; /* Full width for smaller screens */
+    }
+    td {
+        display: flex;
+        flex-direction: column; /* Stack buttons vertically */
+        align-items: center; /* Center buttons horizontally */
+        gap: 1rem;
+    }
+
+    td button {
+        width: 100%; /* Make buttons take full width */
+        margin-right: 0; /* Remove any right margin */
+        margin-bottom: 20px;
+    }
+   
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 20px; /* Adjust heading size */
+    }
+
+    h2 {
+        font-size: 18px; /* Adjust subheading size */
+        margin-left: 20px; /* Adjust margin */
+    }
+
+    table {
+        width: 100%; /* Full width for the table */
+    }
+
+    th, td {
+        font-size: 14px; /* Adjust font size */
+    }
+
+    .dashboard-cards {
+        flex-direction: column; /* Ensure cards are stacked vertically */
+        margin: 20px 10px;
+        gap: 20px; /* Add space between cards */
+    }
+
+    .card {
+        width: 100%; /* Full width for smaller screens */
+    }
+    
+}
+
+@media (max-width: 300px) {
+    .dashboard-cards {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        background-color: #FF97C1;
+    }
+
+    .card {
+        width: calc(50% - 10px); /* Two cards side by side */
+        margin: 5px; /* Adjust spacing */
+    }
+}
+
+#pagination-controls{
+    margin-block: 20px;
+    margin-inline: auto;
+    width: 100%;
+    gap:8px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}

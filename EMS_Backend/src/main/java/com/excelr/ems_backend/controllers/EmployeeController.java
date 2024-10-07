@@ -24,7 +24,7 @@ import com.excelr.ems_backend.service.AdminServiceImplementation;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/employee")
+@RequestMapping("/api")
 public class EmployeeController {
 	@Autowired
 	private AdminServiceImplementation adminService;

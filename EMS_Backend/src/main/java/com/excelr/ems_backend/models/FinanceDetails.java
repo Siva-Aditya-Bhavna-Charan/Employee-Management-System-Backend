@@ -25,6 +25,9 @@ public class FinanceDetails {
 	@Pattern(regexp = "\\d{12}", message = "Aadhar card number should contain only 12 digits.")
 	private String aadharCard;
 	
+	@Pattern(regexp = "\\d{15}", message = "Account number should contain only 15 digits.")
+	private String accountNumber;
+	
 	@NotNullOrBlank(message = "bank name is required.")
 	private String bankName;
 	
@@ -55,6 +58,14 @@ public class FinanceDetails {
 
 	public String getAadharCard() {
 		return aadharCard;
+	}
+
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
 	}
 
 	public void setAadharCard(String aadharCard) {
@@ -103,9 +114,9 @@ public class FinanceDetails {
 
 	@Override
 	public String toString() {
-		return "FinanceDetails [id=" + id + ", panCard=" + panCard + ", aadharCard=" + aadharCard + ", bankName="
-				+ bankName + ", branch=" + branch + ", ifscCode=" + ifscCode + ", ctcBreakup=" + ctcBreakup
-				+ ", employee=" + employee + "]";
+		return "FinanceDetails [id=" + id + ", panCard=" + panCard + ", aadharCard=" + aadharCard + ", accountNumber="
+				+ accountNumber + ", bankName=" + bankName + ", branch=" + branch + ", ifscCode=" + ifscCode
+				+ ", ctcBreakup=" + ctcBreakup + ", employee=" + "]";
 	}
 
 	public FinanceDetails() {

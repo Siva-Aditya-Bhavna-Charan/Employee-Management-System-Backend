@@ -118,9 +118,7 @@ public class EmployeeRecord {
 	@Override
 	public String toString() {
 		return "EmployeeRecord [id=" + id + ", employmentCode=" + employmentCode + ", companyMail=" + companyMail
-				+ ", password=" + password + ", role=" + role + ", personalDetails=" + personalDetails
-				+ ", professionalDetails=" + professionalDetails + ", projects=" + projects + ", financeDetails="
-				+ financeDetails + "]";
+				+ ", password=" + password + ", role=" + role+"]";
 	}
 	
 	
