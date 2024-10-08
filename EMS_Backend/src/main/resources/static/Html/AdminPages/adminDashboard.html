@@ -7,7 +7,15 @@
 <link rel="stylesheet" href="/css/adminDashboard.css">
 </head>
 <body>
-	<div class="dashboard-container">
+	
+	<div id="loader" class="loader">
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <span>Loading..</span>
+    </div>
+	
+	<div class="dashboard-container" id="dashboard">
 		<header>
 			<h1>Admin Dashboard</h1>
 			<input type="text" class="Search" onchange="filterEmployees()"
@@ -97,14 +105,30 @@
             let data=[];
             let currentPage = 1;  
             const recordsPerPage = 10;
-            // Fetch employee details from API and populate the table
-			fetch('http://localhost:8080/api/list')
-			.then(response => response.json())
-			.then(jsonData => {
-			  data=jsonData;
-			  displayData(data);
-			})
-			.catch(error => console.error('Error fetching employee data:', error));
+		
+            function delay(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+            
+			async function fetchAllEmployees(){
+				try {
+	                const [response] = await Promise.all([
+	                    fetch('http://localhost:8080/api/list').then(res => res.json()),
+	                    delay(1000)
+	                ]);
+
+	                data = response;
+	                displayData(data);
+	                document.getElementById('loader').style.display = 'none'; 
+	  	            document.getElementById('dashboard').style.display = 'block';
+	            } catch (error) {
+	                console.error('Error fetching employee data:', error);
+	                document.getElementById('loader').style.display = 'none';
+	            }
+			}
+            
+			window.onload=fetchAllEmployees;
+			
 			function filterEmployees() {
         		const searchQuery = document.querySelector('.Search').value.toLowerCase();
 
@@ -240,7 +264,7 @@
 		}
 		// Function to delete an employee
 		function deleteEmployee(id) {
-		fetch(`http://localhost:8080/api/employee/${id}`, {
+		fetch(`http://localhost:8080/api/${id}`, {
 		    method: 'DELETE'
 		})
 		.then(response => {

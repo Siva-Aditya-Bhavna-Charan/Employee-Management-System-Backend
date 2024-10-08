@@ -332,17 +332,17 @@
             const employeeData = {
                 employmentCode: formData.get('employmentCode'),
                 companyMail: formData.get('companyMail'),
-                password: "securepassword", // You can change this based on your requirements
-                role: "Admin", // You can change this based on your requirements
+                password:formData.get("password") || 'securepassword', // You can change this based on your requirements
+                role: "Employee",
                 personalDetails: personalDetails,
                 professionalDetails: professionalDetails,
                 financeDetails: financeDetails,
-                projects: [projects]// You can add project details here if needed
+                projects: [projects]
             };
             
             console.log(employeeData);
 
-            fetch('http://localhost:8080/api/employee/create', {
+            fetch('http://localhost:8080/api/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

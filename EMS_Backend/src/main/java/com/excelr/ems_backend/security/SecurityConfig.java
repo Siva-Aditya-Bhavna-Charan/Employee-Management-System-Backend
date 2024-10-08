@@ -40,9 +40,19 @@ public class SecurityConfig {
 			registry.requestMatchers("/admin/**").hasRole("ADMIN");
 			registry.requestMatchers("/employee/**").hasRole("EMPLOYEE");
 			registry.anyRequest().authenticated();
-		}).formLogin(formLogin -> formLogin.loginPage("/login.html").loginProcessingUrl("/login")
-				.successHandler(new AuthenticationSuccessHandler(adminRepository, employeeRepository)).permitAll())
-				.logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/login").permitAll()).build();
+		}).formLogin(formLogin -> formLogin
+				.loginPage("/login.html")
+				.loginProcessingUrl("/login")
+				.successHandler(new AuthenticationSuccessHandler(adminRepository, employeeRepository))
+				.permitAll())
+				.logout(logout -> logout
+						.logoutUrl("/logout")
+						.logoutSuccessUrl("/login?logout")  // Redirect to login after successful logout
+		                .invalidateHttpSession(true)        // Invalidate session
+		                .clearAuthentication(true)          // Clear authentication data
+		                .deleteCookies("JSESSIONID") 
+						.permitAll())
+				.build();
 
 	}
 
