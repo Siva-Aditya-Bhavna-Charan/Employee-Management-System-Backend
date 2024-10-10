@@ -339,7 +339,7 @@ nav .profile-details img{
   color: rgba(255, 255, 255, 0.773);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  padding: .4rem .9rem;
+  padding: .2rem .7rem;
   border-radius: 4px;
   cursor: pointer;
 }
@@ -351,6 +351,28 @@ nav .profile-details img{
 .addEmployee-btn span{
   display: block;
   font-size:.9rem;
+}
+
+.filters{
+	width:100%;
+	display: flex;
+	color:white;
+	column-gap:.3rem;
+	margin-block:12px 0;
+	justify-content: flex-end;
+}
+
+.filters select{
+	background: rgba(255, 255, 255, 0.1);
+	color:#808080;
+  	backdrop-filter: blur(10px);
+  	-webkit-backdrop-filter: blur(10px);
+  	border:none;
+  	border-radius:3px;
+  	outline: none;
+  	padding: .1rem .2rem;
+  	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: background 0.3s ease;
 }
 
 .sales-boxes .box .title{
@@ -451,7 +473,7 @@ nav .profile-details img{
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 1rem;
+    margin-block: 1rem;
 }
 
 .pagination button{
@@ -497,6 +519,9 @@ nav .profile-details img{
   nav .profile-details span,nav .profile-details .admin_name,
   nav .profile-details i{
     display: none;
+  }
+  .filters{
+  	justify-content: flex-start;
   }
   .home-section nav .profile-details{
     height: 50px;

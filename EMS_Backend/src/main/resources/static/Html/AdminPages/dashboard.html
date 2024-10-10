@@ -3,141 +3,154 @@
 <html lang="en" dir="ltr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="/css/adminDashboard.css">
-    <link rel="icon" type="image/png" href="/images/logo.png" sizes="32x32">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="/css/adminDashboard.css">
+<link rel="icon" type="image/png" href="/images/logo.png" sizes="32x32">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </head>
 
 <body>
-	
+
 	<!-- loader -->
 	<div id="loader" class="loader">
-        <div class="ring"></div>
-        <div class="ring"></div>
-        <div class="ring"></div>
-        <span>Loading..</span>
-    </div>
-	
+		<div class="ring"></div>
+		<div class="ring"></div>
+		<div class="ring"></div>
+		<span>Loading..</span>
+	</div>
+
 	<!--profile modal  -->
-    <div id="profileModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeModal">&times;</span>
-            <img src="/images/profile.png" alt="Profile Image">
-            <h2 id="name">John Doe</h2>
-            <p id="email">john.doe@example.com</p>
-            <button onclick="window.location.href='/logout'">Log Out</button>
-        </div>
-    </div>
-	
+	<div id="profileModal" class="modal">
+		<div class="modal-content">
+			<span class="close" id="closeModal">&times;</span> <img
+				src="/images/profile.png" alt="Profile Image">
+			<h2 id="name">User Name</h2>
+			<p id="email">email</p>
+			<button onclick="window.location.href='/logout'">Log Out</button>
+		</div>
+	</div>
+
 	<!-- dashboard -->
-    <section class="home-section" id="home">
-        <nav>
-            <div class="sidebar-button">
-                <small>Admin</small>
-                <span class="dashboard">Dashboard</span>
-            </div>
-            <div class="search-box">
-                <input type="text" placeholder="Search..." id="Search" onchange="filterEmployees()">
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </div>
-            <div class="profile-details">
-                <span id="user_name">Admin</span>
-                <i class="fas fa-chevron-down"></i>
-                <img src="/images/profile.png" alt="" id="profileImage">
-            </div>
-        </nav>
+	<section class="home-section" id="home">
+		<nav>
+			<div class="sidebar-button">
+				<small>Admin</small> <span class="dashboard">Dashboard</span>
+			</div>
+			<div class="search-box">
+				<input type="text" placeholder="Search..." id="Search"
+					onchange="filterEmployees()"> <i class="fa fa-search"
+					aria-hidden="true"></i>
+			</div>
+			<div class="profile-details">
+				<span id="user_name">Admin</span> <i class="fas fa-chevron-down"></i>
+				<img src="/images/profile.png" alt="" id="profileImage">
+			</div>
+		</nav>
 
-        <div class="home-content">
-            <div class="overview-boxes">
-                <div class="box">
-                    <div class="right-side">
-                        <div class="box-topic">Total Employees</div>
-                        <div class="number" style="color: rgba(125, 214, 249, 0.765);">536</div>
-                        <div class="indicator">
-                            <i class='fa fa-arrow-up' style="background-color:skyblue;"></i>
-                            <span class="text">Up from this month</span>
-                        </div>
-                    </div>
-                    <i class="fas fa-user-tie cart"></i>
+		<div class="home-content">
+			<div class="overview-boxes">
+				<div class="box">
+					<div class="right-side">
+						<div class="box-topic">Total Employees</div>
+						<div class="number" style="color: rgba(125, 214, 249, 0.765);">536</div>
+						<div class="indicator">
+							<i class='fa fa-arrow-up' style="background-color: skyblue;"></i>
+							<span class="text">Up from this month</span>
+						</div>
+					</div>
+					<i class="fas fa-user-tie cart"></i>
 
-                </div>
-                <div class="box">
-                    <div class="right-side">
-                        <div class="box-topic">Total Projects Done</div>
-                        <div class="number" style="color: rgba(72, 228, 72, 0.835);">100+</div>
-                        <div class="indicator">
-                            <i class='fa fa-arrow-up' style="background-color:rgba(135, 251, 135, 0.835);"></i>
-                            <span class="text">Completion Rate: 85%</span>
-                        </div>
-                    </div>
-                    <i class="fas fa-tasks cart two"></i>
-                </div>
-                <div class="box">
-                    <div class="right-side">
-                        <div class="box-topic">Total Profit</div>
-                        <div class="number" style="color: rgb(252, 196, 92);">$5.2M</div>
-                        <div class="indicator">
-                            <i class='fa fa-arrow-up' style="background-color: rgba(251, 251, 66, 0.752);"></i>
-                            <span class="text">Growth: +12% this quarter</span>
-                        </div>
-                    </div>
-                    <i class="fas fa-chart-line cart three"></i>
-                </div>
-                <div class="box">
-                    <div class="right-side">
-                        <div class="box-topic">Total Clients</div>
-                        <div class="number" style="color: rgb(222, 124, 124);">11+</div>
-                        <div class="indicator">
-                            <i class='fa fa-arrow-up down'></i>
-                            <span class="text">Growth: +12% this quarter</span>
-                        </div>
-                    </div>
-                    <i class="fas fa-users cart four"></i>
-                </div>
-            </div>
+				</div>
+				<div class="box">
+					<div class="right-side">
+						<div class="box-topic">Total Projects Done</div>
+						<div class="number" style="color: rgba(72, 228, 72, 0.835);">100+</div>
+						<div class="indicator">
+							<i class='fa fa-arrow-up'
+								style="background-color: rgba(135, 251, 135, 0.835);"></i> <span
+								class="text">Completion Rate: 85%</span>
+						</div>
+					</div>
+					<i class="fas fa-tasks cart two"></i>
+				</div>
+				<div class="box">
+					<div class="right-side">
+						<div class="box-topic">Total Profit</div>
+						<div class="number" style="color: rgb(252, 196, 92);">$5.2M</div>
+						<div class="indicator">
+							<i class='fa fa-arrow-up'
+								style="background-color: rgba(251, 251, 66, 0.752);"></i> <span
+								class="text">Growth: +12% this quarter</span>
+						</div>
+					</div>
+					<i class="fas fa-chart-line cart three"></i>
+				</div>
+				<div class="box">
+					<div class="right-side">
+						<div class="box-topic">Total Clients</div>
+						<div class="number" style="color: rgb(222, 124, 124);">11+</div>
+						<div class="indicator">
+							<i class='fa fa-arrow-up down'></i> <span class="text">Growth:
+								+12% this quarter</span>
+						</div>
+					</div>
+					<i class="fas fa-users cart four"></i>
+				</div>
+			</div>
 
-            <div class="sales-boxes">
-                <div class="recent-sales box">
-                    <div class="title">
-                        <h3>Employees List</h3>
-                        <div class="addEmployee-btn">
-                            <i class='fa fa-plus'></i>
-                            <span onclick="window.location.href='/admin/create'">Add Employee</span>
-                        </div>
-                    </div>
-                    <div class="sales-details">
-                        <table class="styled-table">
-                            <thead>
-                                <tr>
-                                    <th>Emp ID</th>
-                                    <th>Name</th>
-                                    <th>CompanyMail</th>
-                                    <th>HR Name</th>
-                                    <th>Current Project</th>
-                                    <th>Action Buttons</th>
-                                </tr>
-                            </thead>
-                            <tbody id="table-body">
-                                <!-- Add more rows as needed -->
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="pagination">
-                        <button class="prev-Page" onclick="prevPage()">Prev</button>
-                        <span class="page-info">1</span>
-                        <button class="next-Page" onclick="nextPage()">Next</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+			<div class="sales-boxes">
+				<div class="recent-sales box">
+					<div class="title">
+						<h3>Employees List</h3>
+						<div class="addEmployee-btn">
+							<i class='fa fa-plus'></i> <span
+								onclick="window.location.href='/admin/create'">Add
+								Employee</span>
+						</div>
+					</div>
+					<div class="filters">
+						<label for="order">Sort:</label>
+						<select id="order" onchange="orderData(event)">
+							<option value="Not">Not selected</option>
+							<option value="asc">Ascending</option>
+							<option value="desc">Descending</option>
+						</select>
+					</div>
+					<div class="sales-details">
+						<table class="styled-table">
+							<thead>
+								<tr>
+									<th>Emp ID</th>
+									<th>Name</th>
+									<th>CompanyMail</th>
+									<th>HR Name</th>
+									<th>Current Project</th>
+									<th>Action Buttons</th>
+								</tr>
+							</thead>
+							<tbody id="table-body">
+								<!-- Add more rows as needed -->
+							</tbody>
+						</table>
+					</div>
+					<div class="pagination">
+						<button class="prev-Page" onclick="prevPage()">Prev</button>
+						<span class="page-info">1</span>
+						<button class="next-Page" onclick="nextPage()">Next</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-    <script>
+	<script>
         var modal = document.getElementById("profileModal");
         var profileImage = document.getElementById("profileImage");
         var closeModal = document.getElementById("closeModal");
@@ -153,7 +166,7 @@
         	try{
         		const data = await fetch("http://localhost:8080/details");
         		const response=await data.json();
-        		document.getElementById("name").textContent=response.name;
+        		document.getElementById("name").textContent=response.name?.substring(0,1).toUpperCase()+response.name?.substring(1);
         		document.getElementById("email").textContent=response.companyMail;
         		document.getElementById("user_name").textContent=response.name?.substring(0,1).toUpperCase()+response.name?.substring(1);
 				fetchAllEmployees();
@@ -185,6 +198,22 @@
             
 		}
 		
+		function orderData(event){
+			let val=event.target.value;
+			let orderedData=[...Employees];
+			if(val==="asc"){
+				orderedData.sort((a, b) => a.personalDetails.fullName.localeCompare(b.personalDetails.fullName));
+			}
+			else if(val==="desc"){
+				orderedData.sort((a, b) => b.personalDetails.fullName.localeCompare(a.personalDetails.fullName));
+			}
+			else{
+				orderedData = [...Employees];
+			}
+			
+			Employees=[...orderedData];
+			displayEmployees(Employees);
+		}
 		
         profileImage.onclick = function () {
             modal.style.display = "block";
