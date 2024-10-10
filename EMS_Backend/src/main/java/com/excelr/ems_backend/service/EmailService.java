@@ -41,7 +41,7 @@ public class EmailService {
 				+ "        .details-table th {background-color: #f4f4f4;}"
 				+ "        .footer {margin-top: 30px; text-align: center; color: #999999; font-size: 12px;}"
 				+ "    </style>" + "</head>" + "<body>" + "<div class='email-container'>" + "    <h2>Welcome to "
-				+ "YourCompany" + "!</h2>" + "    <p>Dear " + employeeName + ",</p>"
+				+ "Tech Solutions Pvt Ltd" + "!</h2>" + "    <p>Dear " + employeeName + ",</p>"
 				+ "    <p>Your profile has been created. Below are your details:</p>"
 				+ "    <table class='details-table'>" + "        <tr><th>Employment Code:</th><td>" + employmentCode
 				+ "</td></tr>" + "        <tr><th>Company Email:</th><td>" + companyEmail + "</td></tr>"

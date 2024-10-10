@@ -28,7 +28,6 @@ public class MyUserDetailsService implements UserDetailsService {
 		Optional<EmployeeRecord> employee= employeeRepository.findByEmailOrEmploymentCode(username);
 		Optional<Admin> admin=adminRepository.findByEmailOrEmploymentCode(username);
 		if(admin.isPresent()) {
-			System.out.println(admin.toString());
 			var adminObj=admin.get();
 			return User.builder()
 	    			.username(adminObj.getCompanyMail())
@@ -37,7 +36,6 @@ public class MyUserDetailsService implements UserDetailsService {
 	    			.build();
 		}
 		else if(employee.isPresent()) {
-			System.out.println(employee.toString());
 			var employeeObj=employee.get();
 			return User.builder()
 	    			.username(employeeObj.getCompanyMail())

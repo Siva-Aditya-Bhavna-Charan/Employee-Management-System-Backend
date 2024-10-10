@@ -35,10 +35,10 @@ public class SecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 		return httpSecurity.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests(registry -> {
 			registry.requestMatchers("/home", "/login","/sendEmail").permitAll();
-			registry.requestMatchers("/css/**", "/js/**", "/images/**", "/Html/**").permitAll();
+			registry.requestMatchers("/css/**", "/js/**", "/images/**").permitAll();
 			registry.requestMatchers("/api/**").permitAll();
-			registry.requestMatchers("/admin/**").hasRole("ADMIN");
-			registry.requestMatchers("/employee/**").hasRole("EMPLOYEE");
+			registry.requestMatchers("/admin/**","/Html/AdminPages/**").hasRole("ADMIN");
+			registry.requestMatchers("/employee/**","/Html/EmployeePages/**").hasRole("EMPLOYEE");
 			registry.anyRequest().authenticated();
 		}).formLogin(formLogin -> formLogin
 				.loginPage("/login.html")
@@ -47,10 +47,8 @@ public class SecurityConfig {
 				.permitAll())
 				.logout(logout -> logout
 						.logoutUrl("/logout")
-						.logoutSuccessUrl("/login?logout")  // Redirect to login after successful logout
-		                .invalidateHttpSession(true)        // Invalidate session
-		                .clearAuthentication(true)          // Clear authentication data
-		                .deleteCookies("JSESSIONID") 
+						.logoutSuccessUrl("/login.html?logout=true")
+						.invalidateHttpSession(true)
 						.permitAll())
 				.build();
 

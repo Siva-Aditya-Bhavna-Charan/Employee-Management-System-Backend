@@ -80,12 +80,12 @@
         }
         
         document.addEventListener("DOMContentLoaded", function() {
-            if (window.location.href.includes("/login")) {
+            if (window.location.href.includes("/login.html?logout=true")) {
                 localStorage.removeItem("employeeId");
                 console.log("LocalStorage cleared after logout.");
                 Toastify({
                     text: "You have logged out successfully!",
-                    duration: 3000,
+                    duration: 7000,
                     close: true,
                     gravity: "top",
                     position: "center",

@@ -65,7 +65,9 @@ public class AdminServiceImplementation implements AdminService {
 	            project.setEmployee(employeeRecord);
 	        }
 	    }
-
+	    else {
+	    	employeeRecord.setProjects(null);
+	    }
 	    employeeRepository.save(employeeRecord);
 	    
 	   
@@ -74,7 +76,9 @@ public class AdminServiceImplementation implements AdminService {
 					employeeRecord.getPersonalDetails().getFullName(),
 					employeeRecord.getEmploymentCode(),employeeRecord.getProfessionalDetails().getCompanyMail(),
 					employeeRecordDTO.getPassword(), employeeRecord.getProfessionalDetails().getOfficePhone());
+			System.out.println("email sent successfully!");
 		} catch (MessagingException e) {
+			System.out.println("Failed to send email.");
 			e.printStackTrace();
 		}
 	    

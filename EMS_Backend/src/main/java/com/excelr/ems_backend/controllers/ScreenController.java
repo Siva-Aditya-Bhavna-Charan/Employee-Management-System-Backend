@@ -15,7 +15,7 @@ public class ScreenController {
 	
 	@GetMapping("/admin/dashboard")
 	public String adminDashboard() {
-		return "forward:/Html/AdminPages/adminDashboard.html";
+		return "forward:/Html/AdminPages/dashboard.html";
 	}
 	
 	@GetMapping("/admin/update")
@@ -59,7 +59,6 @@ public class ScreenController {
 	public String customeLogin() {
 		return "forward:/login.html";
 	}
-	
 	
 	
 //	sending login info to frontend

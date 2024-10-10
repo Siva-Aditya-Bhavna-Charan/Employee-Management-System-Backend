@@ -1,4 +1,10 @@
 @charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
 body {
     font-family: Arial, sans-serif;
     color: #fff;
@@ -12,25 +18,25 @@ body {
 }
 
 .container {
-    width: 95%;
+    width:100%;
     margin: 0 auto;
-    padding: 0 20px; /* Add padding to the container */
 }
 
 header {
     width: 100%; /* Use full width */
-    max-width: 1600px; /* Increase max-width to allow more content width */
     margin: 0 auto; /* Center the header */
     display: flex;
-    flex-wrap: wrap; /* Allow header items to wrap on smaller screens */
     justify-content: space-between;
+    background-color:aqua;
     align-items: center;
-    padding: 20px 0;
+    background-color: rgba(255, 255, 255, 0.042);
+  	border-bottom:1px solid rgba(128, 128, 128, 0.184);
+  	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+	padding: 1.5rem 3rem;
 }
 
 header h1 {
-    margin: 0; /* Remove default margin */
-    padding-left: 0; /* Remove any left padding */
+	font-size: 1.5rem;
 }
 
 header input[type="text"] {
@@ -64,8 +70,8 @@ header input[type="text"] {
 }
 
 h2 {
-    margin-top: 20px;
-    margin-left: 40px;
+    margin-block:5rem 1.5rem;
+    text-align: center;
 }
 
 main {
@@ -73,8 +79,8 @@ main {
     padding: 20px;
     border-radius: 10px;
     margin-top: 20px;
-    max-width: 1600px; /* Increase max-width to match the header */
-    width: 95%; /* Increase width of the main section */
+   
+    width: 90%; /* Increase width of the main section */
     margin: 0 auto; /* Center the main section */
 }
 
@@ -168,21 +174,16 @@ main {
 .employee-form .emergency-row .form-group:last-child {
     margin-right: 0; /* No margin for last item */
 }
-textarea{
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid white;
-    background-color: transparent;
-    color: #fff;
-    box-sizing: border-box;
-}
+
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
-    header {
-        flex-direction: column; /* Stack header elements vertically */
-        align-items: flex-start; /* Align items to the start */
+    
+    header{
+    	padding: 1.5rem;
+    }
+    header h1{
+        font-size: 1.2rem;
     }
     header input[type="text"] {
         max-width: 100%; /* Full width on smaller screens */
@@ -194,5 +195,9 @@ textarea{
     .employee-form .emergency-row .form-group {
         width: 100%; /* Full width for emergency row fields */
         margin-right: 0;
+    }
+    
+    .employee-form legend {
+    	font-size: 1.5rem;
     }
 }

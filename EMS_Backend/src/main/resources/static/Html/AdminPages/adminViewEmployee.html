@@ -57,14 +57,14 @@
                 document.querySelector('input[name="office_address_line2"]').value = data.professionalDetails.officeAddress.curr_line2;
                 document.querySelector('input[name="pincode"]').value = data.professionalDetails.officeAddress.curr_pincode;
 
-                document.querySelector('input[name="previous_projects"]').value=data.projects?.length;
-                document.querySelector('input[name="project_name"]').value=data.projects[0]?.projectName;
-                document.querySelector('input[name="project_code"]').value=data.projects[0]?.projectCode;
-                document.querySelector('input[name="project_start_date"]').value=data.projects[0]?.startDate.substr(0,10);
-                document.querySelector('input[name="project_end_date"]').value=data.projects[0]?.endDate.substr(0,10);
-                document.querySelector('input[name="project_manager_name"]').value=data.projects[0]?.clientName;
-                document.querySelector('input[name="project_manager_code"]').value=data.projects[0]?.reportingManagerEmployeeCode;
-                document.querySelector('input[name="project_manager_email"]').value=data.projects[0]?.reportingManagerEmployeeMail;
+                document.querySelector('input[name="previous_projects"]').value=data.projects?.length || 0;
+                document.querySelector('input[name="project_name"]').value=data.projects[0]?.projectName || '';
+                document.querySelector('input[name="project_code"]').value=data.projects[0]?.projectCode || '';
+                document.querySelector('input[name="project_start_date"]').value=data.projects[0]?.startDate.substr(0,10) || '';
+                document.querySelector('input[name="project_end_date"]').value=data.projects[0]?.endDate.substr(0,10) || '';;
+                document.querySelector('input[name="project_manager_name"]').value=data.projects[0]?.clientName || '';;
+                document.querySelector('input[name="project_manager_code"]').value=data.projects[0]?.reportingManagerEmployeeCode || '';
+                document.querySelector('input[name="project_manager_email"]').value=data.projects[0]?.reportingManagerEmployeeMail || '';
 
                 document.querySelector('input[name="PAN"]').value = data.financeDetails.panCard;
                 document.querySelector('input[name="Aadhar_card"]').value = data.financeDetails.aadharCard;
@@ -84,11 +84,8 @@
     <div class="dashboard-container">
         <header>
             <h1>Admin Dashboard</h1>
-        
             <nav class="navbar">
                 <ul>
-                    <!-- <li><a href="#">Add Employee</a></li>
-                    <li><a href="#">Admin Name</a></li> -->
                     <li><a href="/admin/dashboard">Dashboard</a></li>
                 </ul>
             </nav>

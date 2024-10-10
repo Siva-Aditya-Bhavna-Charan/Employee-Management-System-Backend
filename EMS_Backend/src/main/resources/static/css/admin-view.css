@@ -33,7 +33,6 @@ body, html {
 }
 
 .dashboard-container {
-    padding: 20px;
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -44,7 +43,10 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
+    background-color: rgba(255, 255, 255, 0.042);
+  	border-bottom:1px solid rgba(128, 128, 128, 0.184);
+  	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  	padding: 1.5rem 2rem;
 }
 
 h1 {
@@ -75,8 +77,8 @@ h1 {
 .navbar a {
     color: white;
     text-decoration: none;
-    padding: 10px 20px;
-    background-color: #19376D;
+    padding:.6rem .7rem;
+    background-color: #252441;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
@@ -191,26 +193,22 @@ i {
     }
 
     header {
-        flex-direction: column; /* Stack header elements vertically */
-        align-items: flex-start; /* Align header items to the left */
+        padding: 1.5rem;
     }
 
     h1 {
+    	font-size: 1.2rem;
         margin-left: 0; /* Remove left margin */
     }
 
     .navbar {
-        margin-right: 0; /* Remove margin on the navbar */
-        margin-left: 0; /* Remove margin on the navbar */
+        margin-inline: 0; /* Remove margin on the navbar */
+       
     }
 }
 
 /* Media Query for very small screens (like mobile devices) */
 @media (max-width: 300px) {
-    header {
-        flex-direction: column; /* Stack header elements vertically */
-        align-items: flex-start; /* Align header items to the left */
-    }
 
     .navbar {
         flex-direction: column; /* Stack navbar items vertically */

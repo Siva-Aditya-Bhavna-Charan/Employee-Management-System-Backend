@@ -290,7 +290,7 @@ function getQueryParams(param) {
                 .then(response => response.json())
                 .then(data => {
 
-                    // console.log(data);
+                    console.log(data);
                     // personal
                     document.getElementById("full_name").value = data.personalDetails.fullName;
                     document.getElementById("dob").value = data.personalDetails.dob.substr(0, 10);
@@ -321,17 +321,18 @@ function getQueryParams(param) {
                     document.getElementById("office_address_city").value = data.professionalDetails.officeAddress.curr_city;
                     document.getElementById("office_address_line1").value = data.professionalDetails.officeAddress.curr_line1;
                     document.getElementById("office_address_line2").value = data.professionalDetails.officeAddress.curr_line2;
-
+	
+                    console.log(data.projects)
                     // projects
                     let n = data.projects?.length;
                     document.getElementById("previous_projects").value = data.projects?.length;
-                    document.getElementById("project_name").value = data.projects[n - 1]?.projectName;
-                    document.getElementById("project_code").value = data.projects[n - 1]?.projectCode;
-                    document.getElementById("project_start_date").value = data.projects[n - 1]?.startDate?.substr(0, 10);;
-                    document.getElementById("project_end_date").value = data.projects[n - 1]?.endDate?.substr(0, 10);
-                    document.getElementById("client_Name").value = data.projects[n - 1]?.clientName;
-                    document.getElementById("project_manager_code").value = data.projects[n - 1]?.reportingManagerEmployeeCode;
-                    document.getElementById("project_manager_email").value = data.projects[n - 1]?.reportingManagerEmployeeMail;
+                    document.getElementById("project_name").value = data.projects[n - 1]?.projectName || '';
+                    document.getElementById("project_code").value = data.projects[n - 1]?.projectCode || '';
+                    document.getElementById("project_start_date").value = data.projects[n - 1]?.startDate?.substr(0, 10) || '';
+                    document.getElementById("project_end_date").value = data.projects[n - 1]?.endDate?.substr(0, 10) || '';
+                    document.getElementById("client_Name").value = data.projects[n - 1]?.clientName || '';;
+                    document.getElementById("project_manager_code").value = data.projects[n - 1]?.reportingManagerEmployeeCode || '';
+                    document.getElementById("project_manager_email").value = data.projects[n - 1]?.reportingManagerEmployeeMail || '';
 
                     document.getElementById('PAN').value = data.financeDetails.panCard;
                     document.getElementById('Aadhar-card').value = data.financeDetails.aadharCard;
@@ -432,7 +433,7 @@ function getQueryParams(param) {
                     console.log("Data updated successfully:", data);
                     Toastify({
                         text: "Data updated successfully!",
-                        duration: 3000,
+                        duration: 7000,
                         close: true,
                         gravity: "top",
                         position: "center",

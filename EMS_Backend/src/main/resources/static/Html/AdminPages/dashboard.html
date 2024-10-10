@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<!-- Coding by CodingNepal | www.codingnepalweb.com -->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/adminDashboard.css">
+    <link rel="icon" type="image/png" href="/images/logo.png" sizes="32x32">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</head>
+
+<body>
+	
+	<!-- loader -->
+	<div id="loader" class="loader">
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <span>Loading..</span>
+    </div>
+	
+	<!--profile modal  -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <img src="/images/profile.png" alt="Profile Image">
+            <h2 id="name">John Doe</h2>
+            <p id="email">john.doe@example.com</p>
+            <button onclick="window.location.href='/logout'">Log Out</button>
+        </div>
+    </div>
+	
+	<!-- dashboard -->
+    <section class="home-section" id="home">
+        <nav>
+            <div class="sidebar-button">
+                <small>Admin</small>
+                <span class="dashboard">Dashboard</span>
+            </div>
+            <div class="search-box">
+                <input type="text" placeholder="Search..." id="Search" onchange="filterEmployees()">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </div>
+            <div class="profile-details">
+                <span id="user_name">Admin</span>
+                <i class="fas fa-chevron-down"></i>
+                <img src="/images/profile.png" alt="" id="profileImage">
+            </div>
+        </nav>
+
+        <div class="home-content">
+            <div class="overview-boxes">
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Total Employees</div>
+                        <div class="number" style="color: rgba(125, 214, 249, 0.765);">536</div>
+                        <div class="indicator">
+                            <i class='fa fa-arrow-up' style="background-color:skyblue;"></i>
+                            <span class="text">Up from this month</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-user-tie cart"></i>
+
+                </div>
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Total Projects Done</div>
+                        <div class="number" style="color: rgba(72, 228, 72, 0.835);">100+</div>
+                        <div class="indicator">
+                            <i class='fa fa-arrow-up' style="background-color:rgba(135, 251, 135, 0.835);"></i>
+                            <span class="text">Completion Rate: 85%</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-tasks cart two"></i>
+                </div>
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Total Profit</div>
+                        <div class="number" style="color: rgb(252, 196, 92);">$5.2M</div>
+                        <div class="indicator">
+                            <i class='fa fa-arrow-up' style="background-color: rgba(251, 251, 66, 0.752);"></i>
+                            <span class="text">Growth: +12% this quarter</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-chart-line cart three"></i>
+                </div>
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Total Clients</div>
+                        <div class="number" style="color: rgb(222, 124, 124);">11+</div>
+                        <div class="indicator">
+                            <i class='fa fa-arrow-up down'></i>
+                            <span class="text">Growth: +12% this quarter</span>
+                        </div>
+                    </div>
+                    <i class="fas fa-users cart four"></i>
+                </div>
+            </div>
+
+            <div class="sales-boxes">
+                <div class="recent-sales box">
+                    <div class="title">
+                        <h3>Employees List</h3>
+                        <div class="addEmployee-btn">
+                            <i class='fa fa-plus'></i>
+                            <span onclick="window.location.href='/admin/create'">Add Employee</span>
+                        </div>
+                    </div>
+                    <div class="sales-details">
+                        <table class="styled-table">
+                            <thead>
+                                <tr>
+                                    <th>Emp ID</th>
+                                    <th>Name</th>
+                                    <th>CompanyMail</th>
+                                    <th>HR Name</th>
+                                    <th>Current Project</th>
+                                    <th>Action Buttons</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-body">
+                                <!-- Add more rows as needed -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination">
+                        <button class="prev-Page" onclick="prevPage()">Prev</button>
+                        <span class="page-info">1</span>
+                        <button class="next-Page" onclick="nextPage()">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        var modal = document.getElementById("profileModal");
+        var profileImage = document.getElementById("profileImage");
+        var closeModal = document.getElementById("closeModal");
+        const pageInfo = document.querySelector('.page-info');
+        const prevBtn = document.querySelector('.prev-Page');
+        const nextBtn = document.querySelector('.next-Page');
+        let currentPage = 1;
+        const recordsPerPage = 10;
+        let Employees = [];
+            
+        
+		async function fetchLoginInfo(){
+        	try{
+        		const data = await fetch("http://localhost:8080/details");
+        		const response=await data.json();
+        		document.getElementById("name").textContent=response.name;
+        		document.getElementById("email").textContent=response.companyMail;
+        		document.getElementById("user_name").textContent=response.name?.substring(0,1).toUpperCase()+response.name?.substring(1);
+				fetchAllEmployees();
+        		console.log("login: ",response);
+        	}
+        	catch(error){
+        		console.error('Error fetching login details:', error);
+        		
+        	}
+        	finally{
+            	document.getElementById('loader').style.display = 'none'; 
+  	            document.getElementById('home').style.display = 'block';
+            }
+        }
+		
+		window.onload=fetchLoginInfo;
+		
+		
+		async function fetchAllEmployees(){
+			try {
+                const data= await fetch('http://localhost:8080/api/list');
+                const response=await data.json();
+                Employees = response;
+                displayEmployees(Employees);
+                
+            } catch (error) {
+                console.error('Error fetching employee data:', error);
+            }
+            
+		}
+		
+		
+        profileImage.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        closeModal.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function filterEmployees() {
+            const searchQuery = document.querySelector('#Search').value.toLowerCase()
+
+            const filteredData = Employees.filter(employee => {
+                return (
+                    employee.personalDetails.fullName.toLowerCase().includes(searchQuery) ||
+                    employee.employmentCode.includes(searchQuery)
+                );
+            });
+            currentPage = 1;
+            displayEmployees(getPageData(filteredData, currentPage));
+            updatePaginationControls(filteredData);
+        }
+
+        function displayEmployees(data) {
+            let tableBody = document.getElementById("table-body");
+            let rows = ``;
+
+            if (data.length == 0) {
+                rows += `
+                    <tr>
+                        <td colspan=6 style="text-align:center;">No employes available</td>    
+                    </tr>
+
+                `;
+            }
+
+            data.forEach(employee => {
+                rows += `
+                    <tr>
+                        <td>${employee.employmentCode}</td>
+                        <td>${employee.personalDetails.fullName}</td>
+                        <td>${employee.companyMail}</td>
+                        <td>${employee.professionalDetails.hrName}</td>
+                        <td>${employee.projects.length > 0 ? employee.projects[employee.projects.length-1].projectName : 'No Project Assigned'}</td>
+                        <td class="btn-container">
+                            <button class="btn update view-btn" data-id="${employee.id}" onclick="navigate_to_view()">View</button>
+                            <button class="btn update update-btn" data-id="${employee.id}" onclick="navigate_to_update()">Update</button>
+                            <button class="btn delete delete-btn" data-id="${employee.id}" >Delete</button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tableBody.innerHTML = rows;
+            const deleteButtons = document.querySelectorAll('.delete-btn');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const employeeId = event.target.getAttribute('data-id');
+                    deleteEmployee(employeeId);
+                });
+            });
+            updatePaginationControls(data);
+        }
+
+        
+
+        function getPageData(data, page) {
+            const startIndex = (page - 1) * recordsPerPage;
+            const endIndex = startIndex + recordsPerPage;
+            return data.slice(startIndex, endIndex);
+        }
+
+        function updatePaginationControls(data) {
+            const totalPages = Math.ceil(data.length / recordsPerPage);
+            pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+            prevBtn.disabled = currentPage === 1 ? true : false;
+            nextBtn.disabled = currentPage === totalPages ? true : false;
+        }
+
+        function nextPage() {
+            const totalPages = Math.ceil(data.length / recordsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                displayEmployees(getPageData(Employees, currentPage));
+            }
+            updatePaginationControls(Employees);
+        }
+
+        function prevPage() {
+            const totalPages = Math.ceil(data.length / recordsPerPage);
+            if (currentPage > 1) {
+                currentPage--;
+                displayEmployees(getPageData(Employees, currentPage));
+            }
+            updatePaginationControls(Employees)
+        }
+
+        function navigate_to_view(event) {
+
+            const viewButtons = document.querySelectorAll('.view-btn');
+
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const id = this.getAttribute('data-id');
+
+
+                    if (id) {
+                        window.location.href = `/admin/view?id=${encodeURIComponent(id)}`;
+                    }
+                    else {
+                        alert("id is not valid.")
+                    }
+                });
+            });
+
+        }
+        function navigate_to_update() {
+
+            const updateButtons = document.querySelectorAll('.update-btn');
+
+            updateButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const id = this.getAttribute('data-id');
+                    if (id) {
+                        window.location.href = `/admin/update?id=${encodeURIComponent(id)}`;
+                    }
+                    else {
+                        alert("id is not valid.")
+                    }
+                });
+            });
+        }
+
+
+        function deleteEmployee(id) {
+            fetch(`http://localhost:8080/api/${id}`, {
+                method: 'DELETE'
+            })
+                .then(response => {
+                    if (response.ok) {
+                    	Toastify({
+                            text: "Employee Deleted successfully!.",
+                            duration: 3000,
+                            close: true,
+                            gravity: "top",
+                            position: "center",
+                            style: { background: "#4CAF50" },
+                        }).showToast();
+                    	fetchAllEmployees();
+                    } else {
+                    	Toastify({
+                            text: "Failed to delete employee.",
+                            duration: 3000,
+                            close: true,
+                            gravity: "top",
+                            position: "center",
+                            style: { background: "red" },
+                        }).showToast();
+                    }
+                })
+                .catch(error => console.error('Error deleting employee:', error));
+        }
+
+    </script>
+
+</body>
+
+</html>
