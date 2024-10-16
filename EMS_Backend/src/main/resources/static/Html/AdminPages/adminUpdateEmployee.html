@@ -21,16 +21,23 @@
             <nav class="navbar">
                 <ul>
                     <li><a href="/admin/dashboard">Dashboard</a></li>
-                    <!-- <li><a href="#">Admin Name</a></li> -->
-                    <!-- <li><a href="/front-end/login/login.html">Log Out</a></li> -->
                 </ul>
             </nav>
         </header>
+
         <div class="container">
-            <h2>Update Employee full details</h2><br>
+            <h2>Update Employee Details</h2>
+            <div class="tabs-container">
+                <span class="tab active-tab" data-id="personal">Personal</span>
+                <span class="tab" data-id="professional">Professional</span>
+                <span class="tab" data-id="professional">Work Experience</span>
+                <span class="tab" data-id="projects">Project</span>
+                <span class="tab" data-id="finance">Finance</span>
+            </div>
+
             <div class="flex-container">
                 <!-- Personal Details -->
-                <fieldset class="half-width">
+                <fieldset class="half-width" id="personal" data-id="personal">
                     <legend>Personal Details</legend>
                     <label for="full_name">Name:</label>
                     <input type="text" id="full_name" name="full_name" required>
@@ -42,19 +49,14 @@
                         </div>
                         <div>
                             <label for="age">Age:</label>
-                            <input type="number" id="age" name="age"  required>
-                        </div>
-                        <div>
-                            <label for="gender">Gender:</label>
-                            <input type="text" id="gender" name="gender" readonly>
-                            <!-- <select id="gender" name="gender" disabled>
-                                <option value="">Select Gender</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                            </select> -->
+                            <input type="number" id="age" name="age" required>
                         </div>
                     </div>
 
+                    <div>
+                        <label for="gender">Gender:</label>
+                        <input type="text" id="gender" name="gender" style="background-color: #9392c211;" readonly>
+                    </div>
                     <!-- current Address -->
                     <h4 style="margin-top: 1rem; margin-bottom: 0;">Current Address:</h4>
                     <div class="row">
@@ -121,17 +123,17 @@
                             <input type="text" id="emergency_contact_name" name="emergency_contact_name" required>
                         </div>
                         <div>
-                            <label for="emergency_mobile_number">Emgergency Contact:</label>
+                            <label for="emergency_mobile_number">Emgergency Contact Number:</label>
                             <input type="tel" id="emergency_mobile_number" name="emergency_mobile_number"
                                 pattern="\d{10}" required>
                         </div>
                     </div>
 
-                    <button class="save-btn" id="personalSaveBtn">Save Personal Details</button>
+                    <button class="save-btn" id="personalSaveBtn">Save Changes</button>
                 </fieldset>
 
                 <!-- Professional Details -->
-                <fieldset class="half-width">
+                <fieldset class="half-width" id="professional" data-id="professional">
                     <legend>Professional Details</legend>
 
                     <label for="employment_code">Employment Code:</label>
@@ -139,7 +141,7 @@
 
                     <div class="row">
                         <div>
-                            <label for="office_phone">Office Phone Number:</label>
+                            <label for="office_phone">Office Phone No:</label>
                             <input type="tel" id="office_phone" name="office_phone" pattern="\d{8,12}" required>
                         </div>
                         <div>
@@ -185,16 +187,25 @@
                         </div>
                     </div>
 
-                    <button class="save-btn" id="professionalSaveBtn">Save Professional Details</button>
+                    <button class="save-btn" id="professionalSaveBtn">Save Changes</button>
                 </fieldset>
             </div>
 
+            <fieldset class="half-width" id="employment_history" data-id="employmentHistory">
+                <legend>Employment History</legend>
+
+                <div class="employment-history-display">
+                    <!-- added employment history will appear here -->
+                </div>
+                <button class="save-btn" id="employmentHistorySaveBtn">Save Changes</button>
+            </fieldset>
+
             <div class="flex-container">
                 <!-- Project Details -->
-                <fieldset class="half-width">
+                <fieldset class="half-width" id="projects" data-id="projects">
                     <legend>Project Details</legend>
 
-                    <div class="row">
+                    <div class="">
                         <div>
                             <label for="previous_projects">No. of Previous Projects Done:</label>
                             <input type="number" id="previous_projects" name="previous_projects">
@@ -232,11 +243,11 @@
                         </div>
                     </div>
 
-                    <button class="save-btn" id="projectSaveBtn">Save Project Details</button>
+                    <button class="save-btn" id="projectSaveBtn">Save Changes</button>
                 </fieldset>
 
                 <!-- Finance Details -->
-                <fieldset class="half-width">
+                <fieldset class="half-width" id="finance" data-id="finance">
                     <legend>Finance Details</legend>
                     <label for="salary">PAN CARD:</label>
                     <input type="text" id="PAN" name="PAN" required>
@@ -257,9 +268,7 @@
                     <input type="text" id="account_number" name="account_number" required>
 
                     <label for="ctc_breakup">CTC Breakup:</label>
-                    <input type="number" id="ctc_breakup" name="ctc_breakup" required><br> <br>
-
-                    <!-- <button class="save-btn">Save and Submit</button> -->
+                    <input type="number" id="ctc_breakup" name="ctc_breakup" required>
 
                 </fieldset>
             </div>
@@ -268,21 +277,56 @@
     </div>
 
     <script>
+        let tabs = ["personal", "professional", "employmentHistory", "projects", "finance"];
+        let indicationTabs = document.querySelectorAll(".tab");
+        let tabContents = document.querySelectorAll(".half-width");
+        let employment_history_display = document.querySelector(".employment-history-display");
+        document.addEventListener("DOMContentLoaded", function () {
+            if (indicationTabs.length > 0) {
+                indicationTabs[0].classList.add("active-tab");
+                tabContents[0].style.display = 'block';
+            }
+        });
 
-function getQueryParams(param) {
-      const params = new URLSearchParams(window.location.search);
-      return params.get(param);
-    }
+
+
+        indicationTabs.forEach((tab, index) => {
+
+            tab.addEventListener("click", function (event) {
+                indicationTabs.forEach((tabIndicator) => {
+                    tabIndicator.classList.remove("active-tab");
+                })
+                tabContents.forEach((content) => {
+                    content.style.display = "none";
+                })
+                let currentTab = event.target.getAttribute("data-id");
+                let tabId = tab.getAttribute("data-id");
+                tab.classList.add("active-tab");
+                tabContents[index].style.display = 'block';
+            })
+        })
+
+        function getQueryParams(param) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(param);
+        }
+
         let formData = {};
         const id = getQueryParams('id');
+        let employmentHistory = [];
         document.getElementById("personalSaveBtn").addEventListener("click", () => {
             savePersonalData(id);
         })
+
         document.getElementById("professionalSaveBtn").addEventListener("click", () => {
             saveProfessionalData(id);
         })
+
         document.getElementById("projectSaveBtn").addEventListener("click", () => {
             saveProjectData(id);
+        })
+        document.getElementById("employmentHistorySaveBtn").addEventListener("click", () => {
+            saveEmploymentHistory(id);
         })
         function fetchData() {
 
@@ -290,7 +334,7 @@ function getQueryParams(param) {
                 .then(response => response.json())
                 .then(data => {
 
-                    console.log(data);
+                    // console.log(data);
                     // personal
                     document.getElementById("full_name").value = data.personalDetails.fullName;
                     document.getElementById("dob").value = data.personalDetails.dob.substr(0, 10);
@@ -321,18 +365,19 @@ function getQueryParams(param) {
                     document.getElementById("office_address_city").value = data.professionalDetails.officeAddress.curr_city;
                     document.getElementById("office_address_line1").value = data.professionalDetails.officeAddress.curr_line1;
                     document.getElementById("office_address_line2").value = data.professionalDetails.officeAddress.curr_line2;
-	
-                    console.log(data.projects)
+
+                    employmentHistoryDisplay(data.professionalDetails.employmentHistory)
+
                     // projects
                     let n = data.projects?.length;
                     document.getElementById("previous_projects").value = data.projects?.length;
-                    document.getElementById("project_name").value = data.projects[n - 1]?.projectName || '';
-                    document.getElementById("project_code").value = data.projects[n - 1]?.projectCode || '';
-                    document.getElementById("project_start_date").value = data.projects[n - 1]?.startDate?.substr(0, 10) || '';
-                    document.getElementById("project_end_date").value = data.projects[n - 1]?.endDate?.substr(0, 10) || '';
-                    document.getElementById("client_Name").value = data.projects[n - 1]?.clientName || '';;
-                    document.getElementById("project_manager_code").value = data.projects[n - 1]?.reportingManagerEmployeeCode || '';
-                    document.getElementById("project_manager_email").value = data.projects[n - 1]?.reportingManagerEmployeeMail || '';
+                    document.getElementById("project_name").value = data.projects[n - 1]?.projectName;
+                    document.getElementById("project_code").value = data.projects[n - 1]?.projectCode;
+                    document.getElementById("project_start_date").value = data.projects[n - 1]?.startDate?.substr(0, 10);;
+                    document.getElementById("project_end_date").value = data.projects[n - 1]?.endDate?.substr(0, 10);
+                    document.getElementById("client_Name").value = data.projects[n - 1]?.clientName;
+                    document.getElementById("project_manager_code").value = data.projects[n - 1]?.reportingManagerEmployeeCode;
+                    document.getElementById("project_manager_email").value = data.projects[n - 1]?.reportingManagerEmployeeMail;
 
                     document.getElementById('PAN').value = data.financeDetails.panCard;
                     document.getElementById('Aadhar-card').value = data.financeDetails.aadharCard;
@@ -345,6 +390,37 @@ function getQueryParams(param) {
                     formData = data;
                 })
                 .catch(error => console.error("Error fetching data:", error));
+        }
+
+        function employmentHistoryDisplay(history) {
+            let work_history = ``;
+            history.forEach((work, index) => {
+                work_history += `
+            <div class="employment_history">
+                <div class="history-top">
+                    <h3>#Employment ${index + 1}</h3>
+                </div>
+                <div class="">
+                    <label>Company Name:</label>
+                    <input type="text" value="${work.companyName}" name="companyName">
+                </div>
+                <div class="row">
+                    <div class="">
+                        <label>Start Date:</label>
+                        <input type="date" value="${work.joiningDate.slice(0, 10)}" name="startDate">
+                    </div>
+                    <div class="">
+                        <label>End Date:</label>
+                        <input type="date" value="${work.endDate.slice(0, 10)}" name="endDate">
+                    </div>
+                </div>
+            </div>
+        `;
+            });
+
+
+            employment_history_display.innerHTML = work_history.length > 0 ? work_history : "";
+
         }
 
 
@@ -395,6 +471,30 @@ function getQueryParams(param) {
             Update(`http://localhost:8080/api/professional/${id}`, professionalDetails);
         }
 
+        function saveEmploymentHistory(id) {
+            const updatedHistory = [];
+            const workHistoryElements = document.querySelectorAll('.employment_history');
+
+            workHistoryElements.forEach((workElement) => {
+                const companyName = workElement.querySelector('input[name="companyName"]').value;
+                const startDate = workElement.querySelector('input[name="startDate"]').value;
+                const endDate = workElement.querySelector('input[name="endDate"]').value;
+
+                updatedHistory.push({
+                    "companyName":companyName,
+                    "joiningDate": startDate,
+                    "endDate":endDate
+                });
+            });
+
+            const professionalDetails={
+                employmentHistory:updatedHistory
+            }
+            // console.log(updatedHistory);
+            
+            Update(`http://localhost:8080/api/professional/${id}`,professionalDetails );
+
+        }
 
         function saveProjectData(id) {
 
@@ -412,7 +512,7 @@ function getQueryParams(param) {
         }
 
         function Update(url, modifiedData) {
-            console.log(modifiedData);
+            // console.log(modifiedData);
 
             fetch(url, {
                 method: "PUT",
@@ -430,10 +530,10 @@ function getQueryParams(param) {
                     }
                 })
                 .then(data => {
-                    console.log("Data updated successfully:", data);
+                    // console.log("Data updated successfully:", data);
                     Toastify({
                         text: "Data updated successfully!",
-                        duration: 7000,
+                        duration: 3000,
                         close: true,
                         gravity: "top",
                         position: "center",

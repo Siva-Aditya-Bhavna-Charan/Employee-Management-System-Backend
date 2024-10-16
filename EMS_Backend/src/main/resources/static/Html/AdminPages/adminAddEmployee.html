@@ -1,343 +1,600 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Dashboard</title>
     <link rel="icon" type="image/png" href="/images/logo.png" sizes="32x32">
-    <link rel="stylesheet" href="/css/adminCreate.css">
+    <link rel="stylesheet" href="/css/adminCreate.css"> <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </head>
+
 <body>
-    <div class="container">
+    <div class="dashboard-container">
         <header>
             <h1>Admin Dashboard</h1>
-            <div class="header-buttons">
-                <button><a href="/admin/dashboard">Dashboard</a></button>
-            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="/admin/dashboard">Dashboard</a></li>
+                </ul>
+            </nav>
         </header>
-        <h2>Add a New Employee</h2>
-        <main>
-            <form class="employee-form" id="employeeForm">
-                <fieldset>
-                    <legend>Personal Details</legend>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="full-name">Full Name</label>
-                            <input type="text" id="full-name" name="fullName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="permanent-address-line1">Permanent Address Line 1</label>
-                            <input type="text" id="permanent-address-line1" name="perm_line1" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="dob">Date of Birth</label>
-                            <input type="date" id="dob" name="dob" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="permanent-address-line2">Permanent Address Line 2</label>
-                            <input type="text" id="permanent-address-line2" name="perm_line2" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="age">Age</label>
-                            <input type="number" id="age" name="age" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" id="password" name="password" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="gender">Gender</label>
-                            <input type="text" id="gender" name="gender" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="permanent-address-city">Permanent Address City</label>
-                            <input type="text" id="permanent-address-city" name="perm_city" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="mobile">Mobile Number</label>
-                            <input type="tel" id="mobile" name="mobile" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="permanent-address-pincode">Permanent Address Pincode</label>
-                            <input type="text" id="permanent-address-pincode" name="perm_pincode" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="current-address-line1">Current Address Line 1</label>
-                            <input type="text" id="current-address-line1" name="curr_line1" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="current-address-city">Current Address City</label>
-                            <input type="text" id="current-address-city" name="curr_city" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="current-address-line2">Current Address Line 2</label>
-                            <input type="text" id="current-address-line2" name="curr_line2" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="current-address-pincode">Current Address Pincode</label>
-                            <input type="text" id="current-address-pincode" name="curr_pincode" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="personal-mail">Personal Mail ID</label>
-                            <input type="email" id="personal-mail" name="personalMail" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="emergency-contact-name">Emergency Contact Name</label>
-                            <input type="text" id="emergency-contact-name" name="emergencyContactName" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="emergency-contact">Emergency Contact</label>
-                            <input type="tel" id="emergency-contact" name="emergencyContact" required>
-                        </div>
-                        
-                    </div>
-                </fieldset>
-                
-                <br><br>
-                
-                <!--Professional Details-->
-                <fieldset>
-                    <legend>Professional Details</legend>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="employment-code">Employment Code</label>
-                            <input type="number" id="employment-code" name="employmentCode" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="company-mail">Company Mail ID</label>
-                            <input type="email" id="company-mail" name="companyMail" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="office-phone">Office Phone Number</label>
-                            <input type="tel" id="office-phone" name="officePhone" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="date-of-joining">Date of Joining</label>
-                            <input type="date" id="date-of-joining" name="dateOfJoining" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="report-manager-email">Report Manager Email</label>
-                            <input type="email" id="report-manager-email" name="reportManagerEmployeeMail" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="office_address_line1">Office Address Line 1</label>
-                            <input type="text" id="office_address_line1" name="office_address_line1" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="report-manager-code">Report Manager Code</label>
-                            <input type="text" id="report-manager-code" name="reportManagerEmployeeCode" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="office_address_line2">Office Address Line 2</label>
-                            <input type="text" id="office_address_line2" name="office_address_line2" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="hr-name">HR Name</label>
-                            <input type="text" id="hr-name" name="hrName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="office_address_city">Office Address City</label>
-                            <input type="text" id="office_address_city" name="office_address_city" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="office_address_pincode">Office Address Pincode</label>
-                            <input type="text" id="office_address_pincode" name="office_address_pincode" required>
-                        </div>
-                </fieldset><br><br>
 
-                <!--Project Details-->
-                <fieldset>
-                    <legend>Project Details</legend>
-                    <div class="form-row">
-                        <div class="form-group">
+        <div class="container">
+            <h2>Create Employee</h2>
+            <div class="progress-container">
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="1">1</div>
+                <div class="progress-step" data-step="2">2</div>
+                <div class="progress-step" data-step="3">3</div>
+                <div class="progress-step" data-step="4">4</div>
+                <div class="progress-step" data-step="5">5</div>
+            </div>
+            <div class="flex-container">
+                <!-- Personal Details -->
+                <form id="employeeCreateForm">
+                    <fieldset class="half-width" id="personal" data-id="personal">
+                        <legend>Personal Details</legend>
+                        <label for="full_name">Name:</label>
+                        <input type="text" id="full_name" name="full_name" required>
+
+                        <div class="row">
+                            <div>
+                                <label for="dob">DOB:</label>
+                                <input type="date" id="dob" name="dob" required>
+                            </div>
+                            <div>
+                                <label for="age">Age:</label>
+                                <input type="number" id="age" name="age" readonly>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="gender">Gender:</label>
+                            <input type="text" id="gender" name="gender" style="background-color: #9392c211;">
+                        </div>
+                        <!-- current Address -->
+                        <h4 style="margin-top: 1rem; margin-bottom: 0;">Current Address:</h4>
+                        <div class="row">
+                            <div>
+                                <label for="current_address_city">City:</label>
+                                <input type="text" id="current_address_city" name="current_address_city" required>
+                            </div>
+                            <div>
+                                <label for="current_address_pincode">PinCode:</label>
+                                <input type="text" id="current_address_pincode" name="current_address_pincode" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div>
+                                <label for="current_address_line1">Address Line-1:</label>
+                                <input type="text" id="current_address_line1" name="current_address_line1" required>
+                            </div>
+                            <div>
+                                <label for="current_address_line2">Address Line-1:</label>
+                                <input type="text" id="current_address_line2" name="current_address_line2" required>
+                            </div>
+                        </div>
+
+                        <!-- permanent address -->
+                        <h4 style="margin-top: 1rem; margin-bottom: 0;">Permanent Address:</h4>
+                        <div class="row">
+                            <div>
+                                <label for="permanent_address_city">City:</label>
+                                <input type="text" id="permanent_address_city" name="permanent_address_city" required>
+                            </div>
+                            <div>
+                                <label for="permanent_address_pincode">PinCode:</label>
+                                <input type="text" id="permanent_address_pincode" name="permanent_address_pincode"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div>
+                                <label for="permanent_address_line1">Address Line-1:</label>
+                                <input type="text" id="permanent_address_line1" name="permanent_address_line1" required>
+                            </div>
+                            <div>
+                                <label for="permanent_address_line2">Address Line-1:</label>
+                                <input type="text" id="permanent_address_line2" name="permanent_address_line2" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div>
+                                <label for="mobile_number">Mobile Number:</label>
+                                <input type="tel" id="mobile_number" name="mobile_number" pattern="\d{10}" required>
+                            </div>
+
+                            <div>
+                                <label for="personal_mail">Personal Mail:</label>
+                                <input type="email" id="personal_mail" name="personal_mail">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div>
+                                <label for="emergency_contact_name">Emergency Contact Name:</label>
+                                <input type="text" id="emergency_contact_name" name="emergency_contact_name" required>
+                            </div>
+                            <div>
+                                <label for="emergency_mobile_number">Emgergency Contact Number:</label>
+                                <input type="tel" id="emergency_mobile_number" name="emergency_mobile_number"
+                                    pattern="\d{10}" required>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Professional Details -->
+                    <fieldset class="half-width" id="professional" data-id="professional">
+                        <legend>Professional Details</legend>
+
+                        <label for="employment_code">Employment Code:</label>
+                        <input type="text" id="employment_code" name="employment_code" pattern="\d{6}">
+
+                        <div class="row">
+                            <div>
+                                <label for="office_phone">Office Phone No:</label>
+                                <input type="tel" id="office_phone" name="office_phone" pattern="\d{8,12}" required>
+                            </div>
+                            <div>
+                                <label for="company_mail">Company Mail:</label>
+                                <input type="email" id="company_mail" name="company_mail">
+                            </div>
+                        </div>
+
+                        <label for="hr_name">Hr Name:</label>
+                        <input type="text" id="hr_name" name="hr_name" required>
+
+                        <div class="row">
+                            <div>
+                                <label for="reporting_manager_code">Reporting Manager Code:</label>
+                                <input type="text" id="reporting_manager_code" name="reporting_manager_code" required>
+                            </div>
+                            <div>
+                                <label for="reporting_manager_email">Reporting Manager Email:</label>
+                                <input type="email" id="reporting_manager_email" name="reporting_manager_email"
+                                    required>
+                            </div>
+                        </div>
+
+                        <label for="date_of_joining">Date of Joining:</label>
+                        <input type="text" id="date_of_joining" name="date_of_joining" required>
+
+                        <h4 style="margin-top: .8rem;">Office Address:</h4>
+
+                        <div class="row">
+                            <div>
+                                <label for="office_address_city">City:</label>
+                                <input type="text" id="office_address_city" name="office_address_city" required>
+                            </div>
+
+                            <div>
+                                <label for="office_address_pincode">PinCode:</label>
+                                <input type="text" id="office_address_pincode" name="office_address_pincode" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div>
+                                <label for="office_address_line1">Office Address Line 1:</label>
+                                <input type="text" id="office_address_line1" name="office_address_line1" required>
+                            </div>
+                            <div>
+                                <label for="office_address_line2">Office Address Line 2:</label>
+                                <input type="text" id="office_address_line2" name="office_address_line2" required>
+                            </div>
+                        </div>
+                    </fieldset>
+
+
+                    <!-- Project Details -->
+                    <fieldset class="half-width" id="projects" data-id="projects">
+                        <legend>Project Details</legend>
+
+                        <div>
+                            <label for="project_name">Current Project Name:</label>
+                            <input type="text" id="project_name" name="project_name">
+                        </div>
+
+                        <div class="row">
+                            <div>
+                                <label for="project_end_date">End Date:</label>
+                                <input type="date" id="project_end_date" name="project_end_date">
+                            </div>
+                            <div>
+                                <label for="project_start_date">Start Date:</label>
+                                <input type="date" id="project_start_date" name="project_start_date">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="project_code">Project Code:</label>
+                            <input type="text" id="project_code" name="project_code">
+                        </div>
+
+                        <div>
                             <label for="client_Name">Client Name:</label>
                             <input type="text" id="client_Name" name="client_Name">
                         </div>
-                        <div class="form-group">
-                            <label for="project_name">Current Project Name</label>
-                            <input type="text" id="project_name" name="project_name" >
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="project-code">Project Code</label>
-                            <input type="text" id="project-code" name="Project-code" >
-                        </div>
-                        <div class="form-group">
-                            <label for="start-date">Start Date</label>
-                            <input type="date" id="start-date" name="Start-Date" >
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="end-date">End Date</label>
-                            <input type="date" id="end-date" name="End-Date" >
-                        </div>
-                        <div class="form-group">
-                            <label for="project_manager_code">Reporting Manager Code:</label>
-                            <input type="text" id="project_manager_code" name="project_manager_code">
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="project_manager_email">Reporting Manager Email</label>
-                            <input type="email" id="project_manager_email" name="project_manager_email" >
-                        </div>
-                    </div>
-                </fieldset><br><br>
 
-                <!--Financial Details-->
-                <fieldset>
-                    <legend>Financial Details</legend>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="pan-card">PAN Card</label>
-                            <input type="text" id="pan-card" name="panCard" required>
+                        <div class="row">
+                            <div>
+                                <label for="project_manager_code">Reporting Manager Code:</label>
+                                <input type="text" id="project_manager_code" name="project_manager_code">
+                            </div>
+                            <div>
+                                <label for="project_manager_email">Reporting Manager Email:</label>
+                                <input type="email" id="project_manager_email" name="project_manager_email">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="aadhar-card">Aadhar Card</label>
-                            <input type="text" id="aadhar-card" name="aadharCard" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="bank-name">Bank Name</label>
-                            <input type="text" id="bank-name" name="bankName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="branch">Branch</label>
-                            <input type="text" id="branch" name="branch" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="ifsc-code">IFSC Code</label>
-                            <input type="text" id="ifsc-code" name="ifscCode" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="ctc-breakup">CTC Breakup</label>
-                            <input type="number" id="ctc-breakup" name="ctcBreakup" required>
-                        </div>
-                    </div>
-                    <div class="form-row"> 
-                        <div class="form-group">
-                            <label for="accountNnumber">Bank Account Number:</label>
-                            <input type="text" id="accountNnumber" name="accountNumber" required>
-                        </div>
-                    </div>
-                </fieldset><br><br>
+                    </fieldset>
 
-                <button type="submit">Add Employee</button>
-            </form>
-        </main>
+                    <!-- Finance Details -->
+                    <fieldset class="half-width" id="finance" data-id="finance">
+                        <legend>Finance Details</legend>
+                        <div class="row">
+                            <div>
+                                <label for="salary">PAN CARD:</label>
+                                <input type="text" id="PAN" name="PAN" required>
+                            </div>
+                            <div>
+                                <label for="bank_account_number">Aadhar Card:</label>
+                                <input type="text" id="Aadhar-card" name="Aadhar_card" required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="account_number">Bank Account Number:</label>
+                            <input type="text" id="account_number" name="account_number" required>
+                        </div>
+
+                        <div class="row">
+                            <div>
+                                <label for="Bank_Name">Bank Name:</label>
+                                <input type="text" id="Bank_Name" name="Bank_Name">
+                            </div>
+                            <div>
+                                <label for="bank_branch">Bank Branch:</label>
+                                <input type="text" id="bank_branch" name="bank_branch" required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="ifsc_code">IFSC Code:</label>
+                            <input type="text" id="ifsc_code" name="ifsc_code" required>
+                        </div>
+
+                        <div>
+                            <label for="ctc_breakup">CTC Breakup:</label>
+                            <input type="number" id="ctc_breakup" name="ctc_breakup" required>
+                        </div>
+
+                    </fieldset>
+
+                    <!-- employment History -->
+                    <fieldset class="half-width" id="employment_history" data-id="employment_history">
+                        <div class="popover-section-top">
+                            <legend>Employment History</legend>
+                        </div>
+                        <div id="employment_history_modal">
+                            <div class="row">
+                                <div class="">
+                                    <label for="companyName">Company Name:</label>
+                                    <input type="text" name="companyName" id="companyName">
+                                </div>
+                                <div class="">
+                                    <label for="startDate">Start Date:</label>
+                                    <input type="date" name="startDate" id="startDate">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="">
+                                    <label for="endDate">End Date:</label>
+                                    <input type="date" name="endDate" id="endDate">
+                                </div>
+                                <button id="addEmploymentButton">Add</button>
+                            </div>
+                        </div>
+
+                        <div class="employment-history-display">
+                            <!-- added employment history will appear here -->
+
+                        </div>
+                    </fieldset>
+                </form>
+                <div class="btns">
+                    <button class="btn prev">Previous</button>
+                    <button class="btn next">Continue</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-        document.getElementById('employeeForm').addEventListener('submit', function(event) {
+        let tabs = ["personal", "professional", "projects", "finance", "Emplyment History"];
+        let tabContents = document.querySelectorAll(".half-width");
+        let employeeWorkHistory = [];
+        let currentIndex = 0;
+        let employeeCreateForm = document.getElementById("employeeCreateForm");
+        let prevBtn = document.querySelector(".prev");
+        let nextBtn = document.querySelector(".next");
+        let progressSteps = document.querySelectorAll(".progress-step");
+        let progressLineFill = document.createElement("div");
+        let employmentHistoryButton = document.getElementById("addEmploymentButton");
+        let employment_history_display = document.querySelector(".employment-history-display");
+        progressLineFill.classList.add("progress-line-fill");
+        document.querySelector(".progress-container").appendChild(progressLineFill);
+
+        document.addEventListener("DOMContentLoaded", function () {
+            displayContent(currentIndex);
+            updatePrevNextBtns();
+            updateProgress();
+        });
+
+
+        document.getElementById("dob").addEventListener("blur", function (event) {
+            let age_field = document.getElementById("age");
+            let ageEntered = event.target.value;
+            if (ageEntered) {
+                let getAge = calculateAge(ageEntered);
+                age_field.value = getAge;
+            }
+            else {
+                age_field.value = '';
+            }
+        })
+
+
+        function calculateAge(dob) {
+            const birthDate = new Date(dob);
+            const today = new Date();
+
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDifference = today.getMonth() - birthDate.getMonth();
+
+
+            if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+
+            return age;
+        }
+
+        employmentHistoryButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            let companyName = document.getElementById("companyName");
+            let startDate = document.getElementById("startDate");
+            let endDate = document.getElementById("endDate");
+            let employmentDetails = {
+                "companyName": companyName.value,
+                "startDate": startDate.value,
+                "endDate": endDate.value
+            };
+            employeeWorkHistory.push(employmentDetails);
+            companyName.value = '';
+            startDate.value = '';
+            endDate.value = '';
+            employmentHistoryDisplay(employeeWorkHistory);
+        })
+
+        function employmentHistoryDisplay(history) {
+            let work_history = ``;
+            history.forEach((work, index) => {
+                work_history += `
+            <div class="employment_history">
+                <div class="history-top">
+                    <h3>#Employment ${index + 1}</h3>
+                    <span class="delete-history" id="${work.companyName}">X</span>
+                </div>
+                <div class="">
+                    <label>Company Name:</label>
+                    <input type="text" value="${work.companyName}" name="companyName" required>
+                </div>
+                <div class="row">
+                    <div class="">
+                        <label>Start Date:</label>
+                        <input type="date" value="${work.startDate}" name="startDate" required>
+                    </div>
+                    <div class="">
+                        <label>End Date:</label>
+                        <input type="date" value="${work.endDate}" name="endDate" required>
+                    </div>
+                </div>
+            </div>
+        `;
+            });
+
+
+            employment_history_display.innerHTML = work_history.length > 0 ? work_history : "";
+
+
+            const deleteButtons = document.querySelectorAll('.delete-history');
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const employeeId = event.target.getAttribute('id');
+                    updateEmploymentHistory(employeeId);
+                });
+            });
+        }
+
+        function updateEmploymentHistory(name) {
+            employeeWorkHistory = employeeWorkHistory.filter((work) => {
+                return work.companyName !== name;
+            });
+
+
+            employmentHistoryDisplay(employeeWorkHistory);
+        }
+
+
+        function displayContent(currentIndex) {
+            tabContents.forEach((content) => {
+                content.style.display = "none";
+            });
+            tabContents[currentIndex].style.display = 'block';
+        }
+
+        prevBtn.addEventListener("click", function () {
+            if (currentIndex > 0) {
+                currentIndex--;
+                displayContent(currentIndex);
+                updatePrevNextBtns();
+                updateProgress();
+            }
+        });
+
+        nextBtn.addEventListener("click", function () {
+
+            if (validateCurrentTab()) {
+                if (currentIndex < tabs.length - 1) {
+                    currentIndex++;
+                    displayContent(currentIndex);
+                    updatePrevNextBtns();
+                    updateProgress();
+                } else if (currentIndex === tabs.length - 1) {
+                    handleFormSubmit();
+                }
+            } else {
+                Toastify({
+                    text: "Please fill out all required fields before proceeding.",
+                    duration: 3000,
+                    close: true,
+                    gravity: "top",
+                    position: "center",
+                    style: { background: "#DC143C" },
+                }).showToast();
+            }
+        });
+
+        function validateCurrentTab() {
+            let currentTab = tabContents[currentIndex];
+            let inputs = currentTab.querySelectorAll("input[required]");
+
+            if (currentIndex != 2 || currentIndex != 4) {
+                for (let input of inputs) {
+                    if (!input.value.trim()) {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        function updatePrevNextBtns() {
+            prevBtn.hidden = (currentIndex === 0);
+            nextBtn.textContent = (currentIndex === tabs.length - 1) ? "Submit" : "Continue";
+        }
+
+        function updateProgress() {
+
+            progressSteps.forEach((step, index) => {
+                if (index < currentIndex) {
+                    step.classList.add("completed");
+                    step.innerHTML = "&#10004;";
+                } else {
+                    step.classList.remove("completed");
+                    step.innerHTML = index + 1;
+                }
+
+                if (index === currentIndex) {
+                    step.classList.add("active");
+                } else {
+                    step.classList.remove("active");
+                }
+            });
+
+            // Update the progress line fill
+            let progress = (currentIndex / (tabs.length - 1)) * 100;
+            progressLineFill.style.width = progress + "%";
+        }
+
+        function handleFormSubmit() {
             event.preventDefault();
 
-            const formData = new FormData(this);
+            const formData = new FormData(employeeCreateForm);
             const personalDetails = {
-                fullName: formData.get('fullName'),
+                fullName: formData.get('full_name'),
                 dob: formData.get('dob'),
                 gender: formData.get('gender'),
                 age: parseInt(formData.get('age')),
                 permanentAddress: {
-                    perm_city: formData.get('perm_city'),
-                    perm_line1: formData.get('perm_line1'),
-                    perm_line2: formData.get('perm_line2'),
-                    perm_pincode: parseInt(formData.get('perm_pincode'))
+                    perm_city: formData.get('permanent_address_city'),
+                    perm_line1: formData.get('permanent_address_line1'),
+                    perm_line2: formData.get('permanent_address_line2'),
+                    perm_pincode: parseInt(formData.get('permanent_address_pincode'))
                 },
                 currentAddress: {
-                    curr_city: formData.get('curr_city'),
-                    curr_line1: formData.get('curr_line1'),
-                    curr_line2: formData.get('curr_line2'),
-                    curr_pincode: parseInt(formData.get('curr_pincode'))
+                    curr_city: formData.get('current_address_city'),
+                    curr_line1: formData.get('current_address_line1'),
+                    curr_line2: formData.get('current_address_line2'),
+                    curr_pincode: parseInt(formData.get('current_address_pincode'))
                 },
-                mobile: formData.get('mobile'),
-                personalMail: formData.get('personalMail'),
-                emergencyContactName: formData.get('emergencyContactName'),
-                emergencyContact: formData.get('emergencyContact')
+                mobile: formData.get('mobile_number'),
+                personalMail: formData.get('personal_mail'),
+                emergencyContactName: formData.get('emergency_contact_name'),
+                emergencyContact: formData.get('emergency_mobile_number')
             };
 
             const professionalDetails = {
-                employmentCode: formData.get('employmentCode'),
-                companyMail: formData.get('companyMail'),
-                officePhone: formData.get('officePhone'),
+                employmentCode: formData.get('employment_code'),
+                companyMail: formData.get('company_mail'),
+                officePhone: formData.get('office_phone'),
                 officeAddress: {
-                    curr_city: formData.get('curr_city'),
-                    curr_line1: formData.get('curr_line1'),
-                    curr_line2: formData.get('curr_line2'),
-                    curr_pincode:parseInt( formData.get('curr_pincode'))
+                    curr_city: formData.get('office_address_city'),
+                    curr_line1: formData.get('office_address_line1'),
+                    curr_line2: formData.get('office_address_line2'),
+                    curr_pincode: parseInt(formData.get('office_address_pincode'))
                 },
-                reportManagerEmployeeCode: formData.get('reportManagerEmployeeCode'),
-                reportManagerEmployeeMail: formData.get('reportManagerEmployeeMail'),
-                dateOfJoining: formData.get('dateOfJoining'),
-                hrName: formData.get('hrName'),
-                employmentHistory: [] // You can add logic to capture employment history if needed
+                reportManagerEmployeeCode: formData.get('reporting_manager_code'),
+                reportManagerEmployeeMail: formData.get('reporting_manager_email'),
+                dateOfJoining: formData.get('date_of_joining'),
+                hrName: formData.get('hr_name'),
+                employmentHistory: employeeWorkHistory
             };
 
-            
+
 
             const financeDetails = {
-                panCard: formData.get('panCard'),
-                aadharCard: formData.get('aadharCard'),
-                bankName: formData.get('bankName'),
-                branch: formData.get('branch'),
-                ifscCode: formData.get('ifscCode'),
-                accountNumber: formData.get('accountNumber'),
-                ctcBreakup: parseInt(formData.get('ctcBreakup'))
+                panCard: formData.get('PAN'),
+                aadharCard: formData.get('Aadhar_card'),
+                bankName: formData.get('Bank_Name'),
+                branch: formData.get('bank_branch'),
+                ifscCode: formData.get('ifsc_code'),
+                accountNumber: formData.get('account_number'),
+                ctcBreakup: parseInt(formData.get('ctc_breakup'))
             };
 
-            const projects={
-                projectName: formData.get('projectName'),
-                projectCode: formData.get('projectCode'),
-                startDate: formData.get('startDate'),
-                endDate: formData.get('endDate'),
-                reportingManagerEmployeeCode : formData.get('reportingManagerEmployeeCode'),
-                reportingManagerEmployeeMail: formData.get('reportingManagerEmployeeMail'),
-                clientName: formData.get('clientName')
+            const projects = {
+                projectName: formData.get('project_name'),
+                projectCode: formData.get('project_code'),
+                startDate: formData.get('project_start_date'),
+                endDate: formData.get('project_end_date'),
+                reportingManagerEmployeeCode: formData.get('project_manager_code'),
+                reportingManagerEmployeeMail: formData.get('project_manager_email'),
+                clientName: formData.get('client_Name')
             };
 
             const employeeData = {
-                employmentCode: formData.get('employmentCode'),
-                companyMail: formData.get('companyMail'),
-                password:formData.get("password") || 'securepassword', // You can change this based on your requirements
+                employmentCode: formData.get('employment_code'),
+                companyMail: formData.get('company_mail'),
+                password: "securepassword",
                 role: "Employee",
                 personalDetails: personalDetails,
                 professionalDetails: professionalDetails,
                 financeDetails: financeDetails,
                 projects: [projects]
             };
-            
+
             console.log(employeeData);
 
             fetch('http://localhost:8080/api/create', {
@@ -347,40 +604,42 @@
                 },
                 body: JSON.stringify(employeeData)
             })
-            .then(response => {
-                if (response.ok) {
+                .then(response => {
+                    if (response.ok) {
+                        Toastify({
+                            text: "Data inserted successfully!",
+                            duration: 3000,
+                            close: true,
+                            gravity: "top",
+                            position: "center",
+                            style: { background: "#4CAF50" },
+                        }).showToast();
+                        window.location.reload();
+                    } else {
+                        Toastify({
+                            text: "Data not inserted!",
+                            duration: 3000,
+                            close: true,
+                            gravity: "top",
+                            position: "center",
+                            style: { background: "#FF3131" },
+                        }).showToast();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
                     Toastify({
-                        text: "Data inserted successfully!",
-                        duration: 6000,
-                        close: true,
-                        gravity: "top",
-                        position: "center",
-                        style: { background: "#4CAF50" },
-                    }).showToast();
-                    this.reset(); // Reset the form after successful submission
-                } else {
-                    Toastify({
-                        text: "Data not inserted!",
-                        duration: 5000,
-                        close: true,
-                        gravity: "top",
-                        position: "center",
-                        style: { background: "#FF0000" },
-                    }).showToast();
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                Toastify({
                         text: "Somethimg went wrong.Try again!",
                         duration: 3000,
                         close: true,
                         gravity: "top",
                         position: "center",
-                        style: { background: "#4CAF50" },
+                        style: { background: "red" },
                     }).showToast();
-            });
-        });
+                });
+        };
+
     </script>
 </body>
+
 </html>

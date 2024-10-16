@@ -28,7 +28,7 @@
                 console.log(data);
                 // Populate the form fields with the fetched data
                 document.querySelector('input[name="full_name"]').value = data.personalDetails.fullName;
-                document.querySelector('input[name="dob"]').value = data.personalDetails.dob.substr(0,10);
+                document.querySelector('input[name="dob"]').value = data.personalDetails?.dob?.substr(0,10);
                 document.querySelector('input[name="age"]').value = data.personalDetails.age;
                 document.querySelector('input[name="gender"]').value = data.personalDetails.gender;
                 document.querySelector('input[name="current_address"]').value = data.personalDetails.currentAddress.curr_city;
@@ -51,7 +51,7 @@
                 document.querySelector('input[name="hr_name"]').value = data.professionalDetails.hrName;
                 document.querySelector('input[name="reporting_manager_code"]').value = data.professionalDetails.reportManagerEmployeeCode;
                 document.querySelector('input[name="reporting_manager_email"]').value = data.professionalDetails.reportManagerEmployeeMail;
-                document.querySelector('input[name="date_of_joining"]').value = data.professionalDetails.dateOfJoining.substr(0, 10);
+                document.querySelector('input[name="date_of_joining"]').value = data.professionalDetails?.dateOfJoining?.substr(0, 10);
                 document.querySelector('input[name="current_city"]').value = data.professionalDetails.officeAddress.curr_city;
                 document.querySelector('input[name="office_address_line1"]').value = data.professionalDetails.officeAddress.curr_line1;
                 document.querySelector('input[name="office_address_line2"]').value = data.professionalDetails.officeAddress.curr_line2;
@@ -60,8 +60,8 @@
                 document.querySelector('input[name="previous_projects"]').value=data.projects?.length || 0;
                 document.querySelector('input[name="project_name"]').value=data.projects[0]?.projectName || '';
                 document.querySelector('input[name="project_code"]').value=data.projects[0]?.projectCode || '';
-                document.querySelector('input[name="project_start_date"]').value=data.projects[0]?.startDate.substr(0,10) || '';
-                document.querySelector('input[name="project_end_date"]').value=data.projects[0]?.endDate.substr(0,10) || '';;
+                document.querySelector('input[name="project_start_date"]').value=data.projects[0]?.startDate?.substr(0,10) || '';
+                document.querySelector('input[name="project_end_date"]').value=data.projects[0]?.endDate?.substr(0,10) || '';;
                 document.querySelector('input[name="project_manager_name"]').value=data.projects[0]?.clientName || '';;
                 document.querySelector('input[name="project_manager_code"]').value=data.projects[0]?.reportingManagerEmployeeCode || '';
                 document.querySelector('input[name="project_manager_email"]').value=data.projects[0]?.reportingManagerEmployeeMail || '';
